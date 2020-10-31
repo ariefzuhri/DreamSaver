@@ -39,7 +39,7 @@ public class AppUtils {
     }
 
     // Mendapatkan sisa hari
-    public static long getRemainingDays(long targetPrice, long totalSavings, long dailyTarget){
-        return (int) Math.ceil(((double) targetPrice - (double) totalSavings)/(double) dailyTarget);
+    public static long getRemainingDays(long savingTarget, long totalSavings, long dailyTarget){
+        return (int) Math.ceil(((double) savingTarget - (double) totalSavings)/(double) dailyTarget);
     }
 }
