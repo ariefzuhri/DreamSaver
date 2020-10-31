@@ -10,12 +10,12 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamSaver">
-        <activity android:name=".TestingActivity">
+        <activity android:name=".activity.TestingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".activity.MainActivity"/>
     </application>
 </manifest>

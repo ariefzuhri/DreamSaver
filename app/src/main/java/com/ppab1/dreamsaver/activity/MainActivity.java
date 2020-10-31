@@ -1,8 +1,10 @@
-package com.ppab1.dreamsaver;
+package com.ppab1.dreamsaver.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.ppab1.dreamsaver.R;
 
 public class MainActivity extends AppCompatActivity {
 
