@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Button">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/font_nm</item>
+    </style>
+
+    <style name="Button.Outline">
+        <item name="android:background">@drawable/bg_button_outline</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Button.Primary">
+        <item name="android:background">@drawable/bg_button_primary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textCursorDrawable">@drawable/bg_cursor</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHighlight">@color/gray</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="TextView">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextView.Bold">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="TextView.Medium">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="TextView.Regular">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+</resources>
