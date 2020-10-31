@@ -6,7 +6,7 @@ import android.os.Parcelable;
 public class Target implements Parcelable {
     private int id;
     private String name;
-    private long savingTarget;
+    private long savingsTarget;
     private long dailyTarget;
     private String dateTarget;
     private long totalSavings;
@@ -14,10 +14,10 @@ public class Target implements Parcelable {
 
     public Target() {}
 
-    public Target(int id, String name, long savingTarget, long dailyTarget, String dateTarget, long totalSavings, int position) {
+    public Target(int id, String name, long savingsTarget, long dailyTarget, String dateTarget, long totalSavings, int position) {
         this.id = id;
         this.name = name;
-        this.savingTarget = savingTarget;
+        this.savingsTarget = savingsTarget;
         this.dailyTarget = dailyTarget;
         this.dateTarget = dateTarget;
         this.totalSavings = totalSavings;
@@ -27,7 +27,7 @@ public class Target implements Parcelable {
     protected Target(Parcel in) {
         id = in.readInt();
         name = in.readString();
-        savingTarget = in.readLong();
+        savingsTarget = in.readLong();
         dailyTarget = in.readLong();
         dateTarget = in.readString();
         totalSavings = in.readLong();
@@ -38,7 +38,7 @@ public class Target implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(name);
-        dest.writeLong(savingTarget);
+        dest.writeLong(savingsTarget);
         dest.writeLong(dailyTarget);
         dest.writeString(dateTarget);
         dest.writeLong(totalSavings);
@@ -78,12 +78,12 @@ public class Target implements Parcelable {
         this.name = name;
     }
 
-    public long getSavingTarget() {
-        return savingTarget;
+    public long getSavingsTarget() {
+        return savingsTarget;
     }
 
-    public void setSavingTarget(long savingTarget) {
-        this.savingTarget = savingTarget;
+    public void setSavingsTarget(long savingsTarget) {
+        this.savingsTarget = savingsTarget;
     }
 
     public long getDailyTarget() {

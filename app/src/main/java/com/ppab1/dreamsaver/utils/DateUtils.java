@@ -36,7 +36,7 @@ public class DateUtils {
     }
 
     // Mendapatkan tanggal baru setelah tanggal sebelumnya ditambah n hari
-    static String addDay(String oldDate, int numberOfDays){
+    public static String addDay(String oldDate, int numberOfDays){
         if (isValidDateFormat(oldDate)){
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, locale);

@@ -10,7 +10,7 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamSaver">
-        <activity android:name=".activity.TestingActivity">
+        <activity android:name=".testing.TestingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
