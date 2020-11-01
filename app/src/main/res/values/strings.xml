@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Dream Saver</string>
+
+    <string name="loading">Memuat…</string>
+    <string name="loading_number">0</string>
+    <string name="loading_rupiah">Rp0</string>
+
+    <!-- Item target -->
+    <string name="remaining_days">H-</string>
+    <string name="savings_today">Tabungan hari ini:</string>
+    <string name="total_savings">Pencapaian</string>
+    <string name="date_target">Target selesai</string>
+    <string name="savings_target">Target tabungan</string>
+    <string name="daily_target">Target harian</string>
+
+    <!-- MainActivity -->
+    <string name="cd_menu_main">Menu utama</string>
+
+    <!-- ManageTargetActivity -->
+    <string name="title_manage_target">Kelola Rencana</string>
+
+    <!-- AddUpdateTarget -->
+    <string name="title_add_aut">Tambah Rencana Tabungan</string>
+    <string name="title_update_aut">Edit Rencana Tabungan</string>
+
+    <!-- SettingsActivity -->
+    <string name="title_settings">Setelan</string>
+
+    <!-- AboutActivity -->
+    <string name="title_about">Tentang Aplikasi</string>
 </resources>
