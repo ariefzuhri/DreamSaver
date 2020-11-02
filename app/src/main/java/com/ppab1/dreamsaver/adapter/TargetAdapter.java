@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 
 import static com.ppab1.dreamsaver.utils.AppUtils.getRemainingDays;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRupiahFormat;
+import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
 import static com.ppab1.dreamsaver.utils.DateUtils.addDay;
 import static com.ppab1.dreamsaver.utils.DateUtils.getCurrentDate;
 import static com.ppab1.dreamsaver.utils.DateUtils.getFullDate;
@@ -49,6 +53,14 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
     public void onBindViewHolder(@NonNull TargetViewHolder holder, int position) {
         Target target = listTarget.get(position);
         holder.bind(target);
+
+        ImageButton btnManageSavings = holder.itemView.findViewById(R.id.btn_manage_savings_target);
+        btnManageSavings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToast(activity, "Tambah/ambil jumlah tabungan");
+            }
+        });
     }
 
     @Override
@@ -56,9 +68,11 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
         return listTarget.size();
     }
 
-    public static class TargetViewHolder extends RecyclerView.ViewHolder {
+    public class TargetViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvName, tvTotalSavings, tvSavingsTarget, tvDailyTarget, tvDateTarget;
         private final TextView tvRemainingDays, tvRemainingDate, tvSavingsToday;
+        private final TextView tvReminder, tvNotification;
+        private final CardView cvNotification;
 
         public TargetViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,9 +85,16 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             tvRemainingDays = itemView.findViewById(R.id.tv_remaining_days_target);
             tvRemainingDate = itemView.findViewById(R.id.tv_remaining_date_target);
             tvSavingsToday = itemView.findViewById(R.id.tv_savings_today_target);
+
+            tvReminder = itemView.findViewById(R.id.tv_reminder_target);
+            tvNotification = itemView.findViewById(R.id.tv_notification_target);
+            cvNotification = itemView.findViewById(R.id.cv_notification_target);
         }
 
         public void bind(Target target) {
+            int savingsToday = 5000; // Dummy
+            tvReminder.setText("12:00");
+
             tvName.setText(target.getName());
             tvTotalSavings.setText(getRupiahFormat(target.getTotalSavings()));
             tvSavingsTarget.setText(getRupiahFormat(target.getSavingsTarget()));
@@ -83,7 +104,17 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             int remainingDays = getRemainingDays(target.getSavingsTarget(), target.getTotalSavings(), target.getDailyTarget());
             tvRemainingDays.setText(String.valueOf(remainingDays));
             tvRemainingDate.setText(getFullDate(addDay(getCurrentDate(), remainingDays), false));
-            tvSavingsToday.setText(getRupiahFormat(0));
+            tvSavingsToday.setText(getRupiahFormat(savingsToday));
+
+            if (savingsToday >= target.getDailyTarget()){
+                cvNotification.setCardBackgroundColor(activity.getResources().getColor(R.color.green));
+                if (savingsToday == target.getDailyTarget()) tvNotification.setText(R.string.notification_3_target);
+                else tvNotification.setText(R.string.notification_4_target);
+            } else {
+                cvNotification.setCardBackgroundColor(activity.getResources().getColor(R.color.red));
+                if (savingsToday == 0) tvNotification.setText(R.string.notification_1_target);
+                else tvNotification.setText(R.string.notification_2_target);
+            }
         }
     }
 }

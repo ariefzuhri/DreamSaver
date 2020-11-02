@@ -77,7 +77,7 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/btn_edit_savings_target"
+            android:id="@+id/btn_manage_savings_target"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -86,6 +86,18 @@
             app:layout_constraintStart_toStartOf="@+id/cv_total_savings_target"
             app:layout_constraintTop_toBottomOf="@+id/layout_remaining_days_target"
             android:contentDescription="edit_savings" />
+
+        <TextView
+            android:id="@+id/tv_reminder_target"
+            style="@style/TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_alarm_24_black"
+            android:drawablePadding="4dp"
+            android:text="@string/loading"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintEnd_toEndOf="@+id/tv_savings_today_target"
+            app:layout_constraintTop_toTopOf="@+id/btn_manage_savings_target" />
 
         <TextView
             android:id="@+id/tv_title_savings_today_target"
@@ -107,7 +119,7 @@
             android:text="@string/loading_rupiah"
             android:textAlignment="textEnd"
             android:textSize="@dimen/font_nm"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_edit_savings_target"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_manage_savings_target"
             app:layout_constraintEnd_toEndOf="@+id/cv_total_savings_target" />
 
         <RelativeLayout
@@ -115,13 +127,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bg_layout_main"
             android:orientation="horizontal"
             android:padding="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_edit_savings_target">
+            app:layout_constraintTop_toBottomOf="@+id/btn_manage_savings_target">
 
             <TextView
                 android:id="@+id/tv_title_total_savings_target"

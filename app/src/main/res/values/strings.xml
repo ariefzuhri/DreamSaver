@@ -12,6 +12,10 @@
     <string name="date_target">Target selesai</string>
     <string name="savings_target">Target tabungan</string>
     <string name="daily_target">Target harian</string>
+    <string name="notification_1_target">Hari ini Anda belum menabung.</string>
+    <string name="notification_2_target">Anda sudah menabung, tetapi belum sampai target harian.</string>
+    <string name="notification_3_target">Target harian sudah tercapai.</string>
+    <string name="notification_4_target">Hebat! Anda menabung lebih dari target harian.</string>
 
     <!-- MainActivity -->
     <string name="cd_menu_main">Menu utama</string>
