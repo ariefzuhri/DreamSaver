@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Edit Text Testing"
-        android:background="@drawable/bg_layout_main"
+        android:background="@drawable/bg_edit_text_main"
         android:imeOptions="actionDone"
         android:inputType="textPersonName|textCapSentences"/>
 </LinearLayout>

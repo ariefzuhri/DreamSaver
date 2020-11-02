@@ -27,7 +27,7 @@
     </style>
 
     <style name="EditText">
-        <item name="android:background">@drawable/bg_layout_main</item>
+        <item name="android:background">@drawable/bg_edit_text_main</item>
         <item name="android:padding">12dp</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textCursorDrawable">@drawable/bg_cursor</item>
