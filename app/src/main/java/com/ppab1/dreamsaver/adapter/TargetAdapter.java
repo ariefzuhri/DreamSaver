@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -53,14 +52,6 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
     public void onBindViewHolder(@NonNull TargetViewHolder holder, int position) {
         Target target = listTarget.get(position);
         holder.bind(target);
-
-        ImageButton btnManageSavings = holder.itemView.findViewById(R.id.btn_manage_savings_target);
-        btnManageSavings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showToast(activity, "Tambah/ambil jumlah tabungan");
-            }
-        });
     }
 
     @Override
@@ -73,6 +64,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
         private final TextView tvRemainingDays, tvRemainingDate, tvSavingsToday;
         private final TextView tvReminder, tvNotification;
         private final CardView cvNotification;
+        private final ImageButton btnManageSavings;
 
         public TargetViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,6 +81,8 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             tvReminder = itemView.findViewById(R.id.tv_reminder_target);
             tvNotification = itemView.findViewById(R.id.tv_notification_target);
             cvNotification = itemView.findViewById(R.id.cv_notification_target);
+
+            btnManageSavings = itemView.findViewById(R.id.btn_manage_savings_target);
         }
 
         public void bind(Target target) {
@@ -115,6 +109,13 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
                 if (savingsToday == 0) tvNotification.setText(R.string.notification_1_target);
                 else tvNotification.setText(R.string.notification_2_target);
             }
+
+            btnManageSavings.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showToast(activity, "Tambah/ambil jumlah tabungan");
+                }
+            });
         }
     }
 }
