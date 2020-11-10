@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ppab1.dreamsaver">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_logo"
@@ -17,5 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity"/>
+
+        <receiver
+            android:name=".reminder.DailyReminder"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 </manifest>
