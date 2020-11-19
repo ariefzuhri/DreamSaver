@@ -1,5 +1,5 @@
 # Dream Saver
-Proyek Mata Kuliah Praktikum Pemrograman Perangkat Bergerak 1
+Proyek Mata Kuliah Praktikum Pemrograman Aplikasi Perangkat Bergerak 1
 
 ## Kelompok 1
 * Alfiah Nur Hidayati - 19/441216/SV/16568
