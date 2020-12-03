@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/ib_menu_target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_menu_24_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_name_target"
+            style="@style/TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_daily_target_target"
+            style="@style/TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/daily_target"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_daily_target_target"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_target"
+            app:layout_constraintTop_toTopOf="@+id/tv_daily_target_target" />
+
+        <TextView
+            android:id="@+id/tv_daily_target_target"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/loading_rupiah"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/ib_menu_target" />
+
+        <TextView
+            android:id="@+id/tv_title_savings_target_target"
+            style="@style/TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/savings_target"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_savings_target_target"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_target"
+            app:layout_constraintTop_toTopOf="@+id/tv_savings_target_target" />
+
+        <TextView
+            android:id="@+id/tv_savings_target_target"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/loading_rupiah"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintStart_toStartOf="@+id/tv_daily_target_target"
+            app:layout_constraintTop_toBottomOf="@+id/tv_daily_target_target" />
+
+        <TextView
+            android:id="@+id/tv_date_target_target"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/loading_rupiah"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintStart_toStartOf="@+id/tv_daily_target_target"
+            app:layout_constraintTop_toBottomOf="@+id/tv_savings_target_target" />
+
+        <TextView
+            android:id="@+id/tv_remaining_date_target"
+            style="@style/TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/loading"
+            android:textSize="@dimen/font_sm"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_target"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_date_target_target" />
+
+        <TextView
+            android:id="@+id/tv_title_remaining_days_target"
+            style="@style/TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remaining_days"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintStart_toStartOf="@+id/tv_remaining_date_target"
+            app:layout_constraintTop_toBottomOf="@+id/tv_remaining_date_target" />
+
+        <TextView
+            android:id="@+id/tv_remaining_days_target"
+            style="@style/TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading_number"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_remaining_days_target"
+            app:layout_constraintStart_toEndOf="@+id/tv_title_remaining_days_target"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_remaining_days_target" />
+
+        <TextView
+            android:id="@+id/tv_title_total_savings_target"
+            style="@style/TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_savings"
+            android:textSize="@dimen/font_sm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_remaining_date_target" />
+
+        <TextView
+            android:id="@+id/tv_total_savings_target"
+            style="@style/TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading_rupiah"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_total_savings_target"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_total_savings_target" />
+
+        <TextView
+            android:id="@+id/tv_title_date_target_target"
+            style="@style/TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_target"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_date_target_target"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_target"
+            app:layout_constraintTop_toTopOf="@+id/tv_date_target_target" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="144dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

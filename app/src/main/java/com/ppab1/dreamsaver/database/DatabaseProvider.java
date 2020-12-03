@@ -10,19 +10,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import static com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
+import static com.ppab1.dreamsaver.database.DatabaseContract.HistoryColumns;
 import static com.ppab1.dreamsaver.database.DatabaseContract.AUTHORITY;
 
 public class DatabaseProvider extends ContentProvider {
     private static final int TARGET = 100;
     private static final int TARGET_ID = 101;
+    private static final int HISTORY = 200;
+    private static final int HISTORY_ID = 201;
 
     private TargetHelper targetHelper;
+    private HistoryHelper historyHelper;
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
         uriMatcher.addURI(AUTHORITY, TargetColumns.TABLE_NAME, TARGET);
         uriMatcher.addURI(AUTHORITY, TargetColumns.TABLE_NAME + "/#", TARGET_ID);
+        uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME, HISTORY);
+        uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/#", HISTORY_ID);
     }
 
     public DatabaseProvider(){}
@@ -31,6 +37,10 @@ public class DatabaseProvider extends ContentProvider {
     public boolean onCreate() {
         targetHelper = TargetHelper.getInstance(getContext());
         targetHelper.open();
+
+        historyHelper = HistoryHelper.getInstance(getContext());
+        historyHelper.open();
+
         return true;
     }
 
@@ -46,6 +56,14 @@ public class DatabaseProvider extends ContentProvider {
 
             case TARGET_ID:
                 cursor = targetHelper.queryById(uri.getLastPathSegment());
+                break;
+
+            case HISTORY:
+                cursor = historyHelper.queryAll();
+                break;
+
+            case HISTORY_ID:
+                cursor = historyHelper.queryById(uri.getLastPathSegment());
                 break;
 
             default:
@@ -70,6 +88,13 @@ public class DatabaseProvider extends ContentProvider {
         switch (uriMatcher.match(uri)){
             case TARGET:
                 added = targetHelper.insert(contentValues);
+
+                contentValues.put(TargetColumns.POSITION, added);
+                targetHelper.update(String.valueOf(added), contentValues);
+                break;
+
+            case HISTORY:
+                added = historyHelper.insert(contentValues);
                 break;
 
             default:
@@ -90,6 +115,10 @@ public class DatabaseProvider extends ContentProvider {
                 updated = targetHelper.update(uri.getLastPathSegment(), contentValues);
                 break;
 
+            case HISTORY_ID:
+                updated = historyHelper.update(uri.getLastPathSegment(), contentValues);
+                break;
+
             default:
                 updated = 0;
                 break;
@@ -106,6 +135,10 @@ public class DatabaseProvider extends ContentProvider {
         switch (uriMatcher.match(uri)){
             case TARGET_ID:
                 deleted = targetHelper.delete(uri.getLastPathSegment());
+                break;
+
+            case HISTORY_ID:
+                deleted = historyHelper.delete(uri.getLastPathSegment());
                 break;
 
             default:

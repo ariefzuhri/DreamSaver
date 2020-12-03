@@ -66,5 +66,13 @@ public class TestingActivity extends AppCompatActivity {
                 showToast(TestingActivity.this, "Reminder berhasil dimatikan");
             }
         });
+
+        Button btnDatabase = findViewById(R.id.btn_database_testing);
+        btnDatabase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TestingActivity.this, DatabaseActivity.class));
+            }
+        });
     }
 }

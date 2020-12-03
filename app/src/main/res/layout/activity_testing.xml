@@ -106,4 +106,12 @@
         android:layout_height="wrap_content"
         android:text="Matikan reminder"
         android:layout_marginTop="8dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_database_testing"
+        style="@style/Button.Outline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Coba database"
+        android:layout_marginTop="8dp"/>
 </LinearLayout>
