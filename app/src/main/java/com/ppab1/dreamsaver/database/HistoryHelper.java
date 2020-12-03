@@ -8,24 +8,24 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import static android.provider.BaseColumns._ID;
-import static com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
+import static com.ppab1.dreamsaver.database.DatabaseContract.HistoryColumns;
 
 // Kelas ini disebut DML (Data Manipulation Language)
 // Perintah SQL yang berhubungan dengan pengolahan data dalam tabel
-public class TargetHelper {
-    private static final String DATABASE_TABLE = TargetColumns.TABLE_NAME;
-    private static DatabaseHelper databaseHelper;
-    private static TargetHelper INSTANCE;
+public class HistoryHelper {
+    private static final String DATABASE_TABLE = HistoryColumns.TABLE_NAME;
+    private static  DatabaseHelper databaseHelper;
+    private static HistoryHelper INSTANCE;
     private static SQLiteDatabase database;
 
-    TargetHelper(Context context){
+    HistoryHelper(Context context){
         databaseHelper = new DatabaseHelper(context);
     }
 
-    static TargetHelper getInstance(Context context){
+    static HistoryHelper getInstance(Context context){
         if (INSTANCE == null){
             synchronized (SQLiteOpenHelper.class){
-                if (INSTANCE == null) INSTANCE = new TargetHelper(context);
+                if (INSTANCE == null) INSTANCE = new HistoryHelper(context);
             }
         }
         return INSTANCE;
@@ -48,7 +48,7 @@ public class TargetHelper {
                 null,
                 null,
                 null,
-                TargetColumns.POSITION + " ASC"
+                null
         );
     }
 
@@ -60,24 +60,9 @@ public class TargetHelper {
                 new String[]{id},
                 null,
                 null,
-                TargetColumns.POSITION + " ASC"
+                null
         );
     }
-
-    /*Cursor queryByStatus(boolean isAchieved){
-        *//*String selection;
-        if (isAchieved) selection = 0;*//*
-
-        return database.query(
-                DATABASE_TABLE,
-                null,
-                SAVINGS_TARGET + " - " + TOTAL_SAVINGS + " = ?",
-                new String[]{"0"},
-                null,
-                null,
-                POSITION + " ASC"
-        );
-    }*/
 
     long insert(ContentValues contentValues){
         return database.insert(

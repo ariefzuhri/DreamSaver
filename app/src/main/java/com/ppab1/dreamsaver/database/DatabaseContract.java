@@ -18,7 +18,22 @@ public class DatabaseContract {
         public static String TOTAL_SAVINGS = "total_savings";
         public static String POSITION = "position";
 
-        // Definisikan content uri (content://com.ppab1.dreamsaver)
+        // Definisikan content uri (content://com.ppab1.dreamsaver/target)
+        public static final Uri CONTENT_URI = new Uri.Builder().scheme(SCHEME)
+                .authority(AUTHORITY)
+                .appendPath(TABLE_NAME)
+                .build();
+    }
+
+    public static final class HistoryColumns implements BaseColumns{
+        public static String TABLE_NAME = "history";
+        public static String ID_TARGET = "id_target";
+        public static String DATE = "date";
+        public static String TIME = "time";
+        public static String NOMINAL = "nominal";
+        public static String DESC = "desc";
+
+        // Definisikan content uri (content://com.ppab1.dreamsaver/history)
         public static final Uri CONTENT_URI = new Uri.Builder().scheme(SCHEME)
                 .authority(AUTHORITY)
                 .appendPath(TABLE_NAME)

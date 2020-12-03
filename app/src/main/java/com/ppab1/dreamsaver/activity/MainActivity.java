@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View child = viewPager.getChildAt(0);
         if (child instanceof RecyclerView) child.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
-        ImageButton btnAdd = findViewById(R.id.btn_add_main);
+        ImageButton btnAdd = findViewById(R.id.ib_add_main);
         btnAdd.setOnClickListener(this);
-        btnMenu = findViewById(R.id.btn_menu_main);
+        btnMenu = findViewById(R.id.ib_menu_main);
         btnMenu.setOnClickListener(this);
 
         initializeMenu();
@@ -86,11 +86,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn_add_main:
+            case R.id.ib_add_main:
                 showToast(MainActivity.this, getString(R.string.title_add_aut));
                 break;
 
-            case R.id.btn_menu_main:
+            case R.id.ib_menu_main:
                 menu.show();
                 break;
         }
