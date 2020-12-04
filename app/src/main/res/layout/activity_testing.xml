@@ -40,11 +40,11 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_primary_testing"
+            android:id="@+id/btn_send_notification_testing"
             style="@style/Button.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Simpan"
+            android:text="Kirim notifikasi"
             android:layout_weight="1"/>
 
         <View
@@ -53,11 +53,11 @@
             android:layout_weight="1.9"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_outline_testing"
+            android:id="@+id/btn_enable_reminder_testing"
             style="@style/Button.Outline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hapus"
+            android:text="Hidupkan reminder"
             android:layout_weight="1"/>
     </LinearLayout>
 
@@ -98,4 +98,20 @@
         android:background="@drawable/bg_edit_text_main"
         android:imeOptions="actionDone"
         android:inputType="textPersonName|textCapSentences"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_disable_reminder_testing"
+        style="@style/Button.Outline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Matikan reminder"
+        android:layout_marginTop="8dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_database_testing"
+        style="@style/Button.Outline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Coba database"
+        android:layout_marginTop="8dp"/>
 </LinearLayout>

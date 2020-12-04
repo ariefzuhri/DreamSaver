@@ -17,7 +17,7 @@
         android:background="@color/blue">
 
         <ImageButton
-            android:id="@+id/btn_add_main"
+            android:id="@+id/ib_add_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -26,7 +26,7 @@
             android:contentDescription="@string/title_add_aut" />
 
         <ImageButton
-            android:id="@+id/btn_menu_main"
+            android:id="@+id/ib_menu_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
