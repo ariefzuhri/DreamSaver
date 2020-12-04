@@ -10,11 +10,6 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamSaver">
-        <activity android:name=".activity.AboutActivity" android:label="About Acitivity" android:parentActivityName=".activity.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ppab1.dreamsaver.activity.AboutActivity" />
-        </activity>
         <activity android:name=".testing.TestingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,5 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.AboutActivity"/>
     </application>
 </manifest>
