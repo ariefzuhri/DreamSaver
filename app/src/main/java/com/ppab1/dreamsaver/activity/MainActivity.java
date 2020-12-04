@@ -5,12 +5,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.content.Intent;
 
 import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.adapter.TargetAdapter;
@@ -74,8 +76,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
 
                     case R.id.menu_about_main:
-                        showToast(MainActivity.this, getString(R.string.title_about));
-                        break;
+                        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                        startActivity(intent);
+                        return false;
                 }
                 return false;
             }

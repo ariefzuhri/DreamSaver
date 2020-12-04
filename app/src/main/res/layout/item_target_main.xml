@@ -38,9 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            android:gravity="center"
             android:background="@drawable/bg_remaining_days"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name_target">
@@ -54,9 +54,9 @@
                     style="@style/TextView.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:text="@string/remaining_days"
-                    android:textSize="@dimen/font_nm"
-                    android:gravity="center_vertical"/>
+                    android:textSize="@dimen/font_nm" />
 
                 <TextView
                     android:id="@+id/tv_remaining_days_target"
