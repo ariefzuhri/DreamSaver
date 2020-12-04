@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:ignore="Autofill">
+
+    <EditText
+        android:id="@+id/edt_name_au"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Impian saya"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:layout_marginVertical="8dp"/>
+
+    <EditText
+        android:id="@+id/edt_daily_target_au"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Target harian"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:layout_marginVertical="8dp"/>
+
+    <EditText
+        android:id="@+id/edt_savings_target_au"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Target tabungan"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:layout_marginVertical="8dp"/>
+
+    <EditText
+        android:id="@+id/edt_date_target_au"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Target selesai"
+        android:imeOptions="actionNext"
+        android:inputType="date"
+        android:layout_marginVertical="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save_au"
+            style="@style/Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:layout_weight="1"/>
+
+        <View
+            android:id="@+id/view_space_au"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.9"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_delete_au"
+            style="@style/Button.Outline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hapus"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

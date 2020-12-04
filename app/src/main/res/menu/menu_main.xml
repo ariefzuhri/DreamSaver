@@ -6,7 +6,7 @@
     <item
         android:id="@+id/menu_manage_target_main"
         android:title="@string/title_manage_target"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/menu_settings_main"
@@ -16,5 +16,5 @@
     <item
         android:id="@+id/menu_about_main"
         android:title="@string/title_about"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 </menu>

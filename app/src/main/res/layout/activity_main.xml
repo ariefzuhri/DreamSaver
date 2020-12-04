@@ -11,7 +11,7 @@
         android:id="@+id/layout_title_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="36dp"
+        android:paddingTop="16dp"
         android:paddingBottom="24dp"
         android:paddingHorizontal="16dp"
         android:background="@color/blue">

@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
-import android.content.Intent;
 
 import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.adapter.TargetAdapter;
@@ -22,7 +21,6 @@ import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 import java.util.ArrayList;
 
 import static com.ppab1.dreamsaver.testing.DummyTarget.getDummyTarget;
-import static com.ppab1.dreamsaver.utils.AppUtils.hideStatusBar;
 import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -33,8 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        hideStatusBar(this, getSupportActionBar());
 
         TargetAdapter adapter = new TargetAdapter(this);
         adapter.notifyDataSetChanged();
@@ -78,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case R.id.menu_about_main:
                         Intent intent = new Intent(MainActivity.this, AboutActivity.class);
                         startActivity(intent);
-                        return false;
+                        break;
                 }
                 return false;
             }

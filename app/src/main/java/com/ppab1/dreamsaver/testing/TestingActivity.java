@@ -10,13 +10,13 @@ import android.widget.Button;
 
 import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.activity.MainActivity;
+import com.ppab1.dreamsaver.activity.WelcomeActivity;
 import com.ppab1.dreamsaver.reminder.DailyReminder;
 
 import static com.ppab1.dreamsaver.reminder.ReminderHelper.REQUEST_DAILY_REMINDER;
 import static com.ppab1.dreamsaver.reminder.ReminderHelper.cancelReminder;
 import static com.ppab1.dreamsaver.reminder.ReminderHelper.sendNotification;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRemainingDays;
-import static com.ppab1.dreamsaver.utils.AppUtils.hideStatusBar;
 import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
 
 public class TestingActivity extends AppCompatActivity {
@@ -26,7 +26,6 @@ public class TestingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testing);
 
-        hideStatusBar(this, getSupportActionBar());
         Log.d(getClass().getSimpleName(), "Sisa hari: " + getRemainingDays(10000, 500, 700));
 
         Button btnStart = findViewById(R.id.btn_next_intro_testing);
@@ -72,6 +71,14 @@ public class TestingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TestingActivity.this, DatabaseActivity.class));
+            }
+        });
+
+        Button btnWelcome = findViewById(R.id.btn_welcome_testing);
+        btnWelcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TestingActivity.this, WelcomeActivity.class));
             }
         });
     }
