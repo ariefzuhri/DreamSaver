@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/blue">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo"
+            android:id="@+id/logo"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/logo"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/text_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dream Saver"
+                android:textColor="@color/white"
+                android:layout_toRightOf="@+id/logo"
+                android:textSize="@dimen/font_lg"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Versi 1.0.0"
+                android:textSize="@dimen/font_nm"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="@dimen/font_nm"
+        android:textStyle="bold"
+        android:text="Meet the Team"
+        android:textColor="@color/white"
+        android:paddingBottom="14dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_layout_main"
+        android:padding="15dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/avatar_alfi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_avatar_alfiah"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/avatar_alfi"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_alfi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alfiah Nurhidayati"
+                android:textSize="@dimen/font_md"
+                android:textColor="#504C6B"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Universitas Gadjah Mada"
+                android:textSize="@dimen/font_md"
+                android:textColor="#504C6B"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_layout_main"
+        android:padding="15dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/avatar_arief"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_avatar_arief"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/avatar_arief"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_arief"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arief Zuhri"
+                android:textSize="@dimen/font_md"
+                android:textColor="#504C6B"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Universitas Gadjah Mada"
+                android:textSize="@dimen/font_md"
+                android:textColor="#504C6B"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_layout_main"
+        android:padding="15dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/avatar_indra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_avatar_indra"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/avatar_indra"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_indra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Muhammad Indra Adha"
+                android:textSize="@dimen/font_md"
+                android:textColor="#504C6B"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Universitas Gadjah Mada"
+                android:textSize="@dimen/font_md"
+                android:textColor="#504C6B"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_layout_main"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/avatar_rifki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_avatar_rifki"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/avatar_rifki"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_rifki"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Muhammad Rifki"
+                android:textSize="@dimen/font_md"
+                android:textColor="#504C6B"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Universitas Gadjah Mada"
+                android:textSize="@dimen/font_md"
+                android:textColor="#504C6B"/>
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="@dimen/font_nm"
+        android:textStyle="bold"
+        android:text="Credit : Freepik"
+        android:textColor="@color/white"/>
+
+
+</LinearLayout>
