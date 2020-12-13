@@ -17,7 +17,7 @@ import com.ppab1.dreamsaver.model.Target;
 
 import static com.ppab1.dreamsaver.utils.EditTextUtils.getFixText;
 
-public class AddUpdateActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddUpdateTestingActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_TARGET = "extra_target";
 
     private EditText edtName, edtDailyTarget, edtSavingsTarget, edtDateTarget;
@@ -28,7 +28,7 @@ public class AddUpdateActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_update);
+        setContentView(R.layout.activity_add_update_testing);
 
         edtName = findViewById(R.id.edt_name_au);
         edtDailyTarget = findViewById(R.id.edt_daily_target_au);

@@ -46,7 +46,7 @@ public class DatabaseActivity extends AppCompatActivity implements LoadTargetCal
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DatabaseActivity.this, AddUpdateActivity.class);
+                Intent intent = new Intent(DatabaseActivity.this, AddUpdateTestingActivity.class);
                 startActivity(intent);
             }
         });

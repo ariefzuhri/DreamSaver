@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamSaver"
         tools:ignore="AllowBackup">
-        <activity android:name=".testing.AddUpdateActivity"/>
+        <activity android:name=".testing.AddUpdateTestingActivity"/>
         <activity android:name=".testing.DatabaseActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.SplashActivity">
