@@ -24,6 +24,7 @@
         <activity android:name=".testing.AddUpdateTestingActivity"/>
         <activity android:name=".testing.DatabaseActivity" />
         <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.RencanaActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

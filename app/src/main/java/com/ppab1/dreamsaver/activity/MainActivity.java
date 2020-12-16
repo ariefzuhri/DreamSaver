@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.menu_manage_target_main:
-                        showToast(MainActivity.this, getString(R.string.title_manage_target));
+                        Intent intent1 = new Intent(MainActivity.this, RencanaActivity.class);
+                        startActivity(intent1);
                         break;
 
                     case R.id.menu_settings_main:

@@ -18,11 +18,6 @@ public class RencanaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try
-        {
-            this.getSupportActionBar().hide();
-        }
-        catch (NullPointerException e){}
         setContentView(R.layout.activity_rencana);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
@@ -33,7 +28,7 @@ public class RencanaActivity extends AppCompatActivity {
         TextView textTitle = findViewById(R.id.tv_title_title);
         textTitle.setText("Kelola Rencana");
 
-        ImageButton buttonTitle = findViewById(R.id.btn_back_title);
+        ImageButton buttonTitle = findViewById(R.id.ib_back_title);
         buttonTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +37,8 @@ public class RencanaActivity extends AppCompatActivity {
         });
 
         final ViewPager viewPager = findViewById(R.id.pager);
-        PagerAdapter adapter = new com.ppab1.dreamsaver.adapter.PagerAdapter()
+        PagerAdapter adapter = new com.ppab1.dreamsaver.adapter.PagerAdapter(getSupportFragmentManager(),
+                tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.
                 TabLayoutOnPageChangeListener(tabLayout));
