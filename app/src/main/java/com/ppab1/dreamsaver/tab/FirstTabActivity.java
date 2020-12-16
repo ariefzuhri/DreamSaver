@@ -46,21 +46,18 @@ public class FirstTabActivity extends Fragment {
 
         itemValues = new ArrayList<>();
 
-            ItemData item = new ItemData();
+        ItemData item = new ItemData();
 
-            item.dailyTarget = "Daily ";
-            item.totalTarget = "Total";
-            item.savingTarget = "Saving";
-            item.dateTarget = "Date";
+        item.dailyTarget = "Daily ";
+        item.totalTarget = "Total";
+        item.savingTarget = "Saving";
+        item.dateTarget = "Date";
 
-            itemValues.add(item);
+        itemValues.add(item);
 
         itemAdapter = new ItemAdapter(getActivity(),itemValues);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),
-                LinearLayoutManager.VERTICAL, false);
-
-        GridLayoutManager layoutManager1 = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager layoutManager1 = new GridLayoutManager(getActivity(),1);
 
         recyclerView.setLayoutManager(layoutManager1);
         recyclerView.setAdapter(itemAdapter);

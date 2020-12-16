@@ -5,4 +5,5 @@ public class ItemData {
     public String dateTarget;
     public String dailyTarget;
     public String totalTarget;
+    
 }

@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".tab.SecondTabActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/font_xs"
+            android:textColor="@color/black"
+            android:id="@+id/spasi"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_rencana_2"
+            android:layout_below="@id/spasi"/>
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
