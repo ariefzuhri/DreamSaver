@@ -65,11 +65,11 @@
             android:layout_marginVertical="16dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_save_st"
-                style="@style/Button.Primary"
+                android:id="@+id/btn_cancel_st"
+                style="@style/Button.Outline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Simpan"
+                android:text="Batal"
                 android:layout_weight="1"/>
 
             <View
@@ -78,11 +78,11 @@
                 android:layout_weight="1.9"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_cancel_st"
-                style="@style/Button.Outline"
+                android:id="@+id/btn_save_st"
+                style="@style/Button.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Batal"
+                android:text="Simpan"
                 android:layout_weight="1"/>
         </LinearLayout>
     </LinearLayout>

@@ -18,6 +18,8 @@ public class DatabaseProvider extends ContentProvider {
     private static final int TARGET_ID = 101;
     private static final int HISTORY = 200;
     private static final int HISTORY_ID = 201;
+    private static final int HISTORY_TARGET_ID = 202;
+    private static final int HISTORY_TARGET_ID_TODAY = 203;
 
     private TargetHelper targetHelper;
     private HistoryHelper historyHelper;
@@ -29,6 +31,8 @@ public class DatabaseProvider extends ContentProvider {
         uriMatcher.addURI(AUTHORITY, TargetColumns.TABLE_NAME + "/#", TARGET_ID);
         uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME, HISTORY);
         uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/#", HISTORY_ID);
+        uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/target_id/#", HISTORY_TARGET_ID);
+        uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/target_id/today/#", HISTORY_TARGET_ID_TODAY);
     }
 
     public DatabaseProvider(){}
@@ -64,6 +68,14 @@ public class DatabaseProvider extends ContentProvider {
 
             case HISTORY_ID:
                 cursor = historyHelper.queryById(uri.getLastPathSegment());
+                break;
+
+            case HISTORY_TARGET_ID:
+                cursor = historyHelper.queryByTargetId(uri.getLastPathSegment());
+                break;
+
+            case HISTORY_TARGET_ID_TODAY:
+                cursor = historyHelper.queryByTargetIdToday(uri.getLastPathSegment());
                 break;
 
             default:

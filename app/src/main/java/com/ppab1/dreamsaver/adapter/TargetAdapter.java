@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,13 +25,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
-import com.ppab1.dreamsaver.activity.AboutActivity;
-import com.ppab1.dreamsaver.activity.LaporanActivity;
+import com.ppab1.dreamsaver.activity.ReportActivity;
 import com.ppab1.dreamsaver.activity.MainActivity;
-import com.ppab1.dreamsaver.activity.TargetActivity;
 import com.ppab1.dreamsaver.callback.TargetMoveCallback;
+import com.ppab1.dreamsaver.database.DatabaseContract.HistoryColumns;
 import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
 import com.ppab1.dreamsaver.dialog.DialogSaveTake;
+import com.ppab1.dreamsaver.model.History;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.activity.AddUpdateActivity;
 
@@ -38,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.ppab1.dreamsaver.activity.AddUpdateActivity.EXTRA_TARGET;
+import static com.ppab1.dreamsaver.database.MappingHelper.mapCursorToHistoryList;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRemainingDays;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRupiahFormat;
 import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
@@ -106,7 +108,20 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             final TextView tvNotification = holder.itemView.findViewById(R.id.tv_notification_target);
             final TextView tvSavingsToday = holder.itemView.findViewById(R.id.tv_savings_today_target);
 
-            int savingsToday = 5000; // Dummy
+            ArrayList<History> historyList = new ArrayList<>();
+            Uri uri = Uri.parse(HistoryColumns.CONTENT_URI + "/target_id/today/" + target.getId());
+            Cursor cursor = activity.getContentResolver().query(uri, null, null, null, null);
+
+            if (cursor != null){
+                historyList.addAll(mapCursorToHistoryList(cursor));
+                cursor.close();
+            }
+
+            int savingsToday = 0;
+            for (History history : historyList){
+                savingsToday += history.getNominal();
+            }
+
             if (savingsToday >= target.getDailyTarget()){
                 cvNotification.setCardBackgroundColor(activity.getResources().getColor(R.color.green));
                 if (savingsToday == target.getDailyTarget()) tvNotification.setText(R.string.notification_3_target);
@@ -150,7 +165,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
                                     break;
 
                                 case R.id.menu_report_target:
-                                    Intent intentReport = new Intent(activity, LaporanActivity.class);
+                                    Intent intentReport = new Intent(activity, ReportActivity.class);
                                     intentReport.putExtra(EXTRA_TARGET, target);
                                     activity.startActivity(intentReport);
                                     break;

@@ -10,8 +10,9 @@ import com.ppab1.dreamsaver.adapter.TargetAdapter;
 import com.ppab1.dreamsaver.database.DatabaseContract;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.testing.DatabaseActivity;
-import com.ppab1.dreamsaver.testing.LoadTargetCallback;
+import com.ppab1.dreamsaver.callback.LoadTargetCallback;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,28 +33,19 @@ import static com.ppab1.dreamsaver.database.MappingHelper.mapCursorToTargetList;
 public class FinishedFragment extends Fragment implements LoadTargetCallback{
     private static final String TAG = DatabaseActivity.class.getSimpleName();
     private TargetAdapter adapter;
-    private RecyclerView recyclerView;
 
-    public FinishedFragment() {
-        // Required empty public constructor
+    public FinishedFragment() {}
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_finished, container, false);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_finished, container, false);
-        recyclerView = view.findViewById(R.id.recycler_rencana_2);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_rencana_2);
         recyclerView.setHasFixedSize(true);
         adapter = new TargetAdapter(getActivity());
         adapter.notifyDataSetChanged();
@@ -68,14 +60,10 @@ public class FinishedFragment extends Fragment implements LoadTargetCallback{
         getActivity().getContentResolver().registerContentObserver(DatabaseContract.TargetColumns.CONTENT_URI, true, dataObserver);
 
         if (savedInstanceState == null) new FinishedFragment.LoadTargetAsync(getActivity(), this).execute();
-
-        return view;
     }
 
     @Override
-    public void preExecute() {
-
-    }
+    public void preExecute() {}
 
     @Override
     public void postExecute(ArrayList<Target> targetList) {

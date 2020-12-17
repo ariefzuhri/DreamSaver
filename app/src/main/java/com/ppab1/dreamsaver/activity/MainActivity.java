@@ -25,14 +25,13 @@ import com.ppab1.dreamsaver.adapter.TargetAdapter;
 import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.testing.DatabaseActivity;
-import com.ppab1.dreamsaver.testing.LoadTargetCallback;
+import com.ppab1.dreamsaver.callback.LoadTargetCallback;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import static com.ppab1.dreamsaver.database.MappingHelper.mapCursorToTargetList;
-import static com.ppab1.dreamsaver.testing.DummyTarget.getDummyTarget;
 import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, LoadTargetCallback {
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         adapter = new TargetAdapter(this);
         adapter.notifyDataSetChanged();
-        //loadDummyTarget(adapter);
 
         ViewPager2 viewPager = findViewById(R.id.vp_target_main);
         viewPager.setAdapter(adapter);
@@ -118,25 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 menu.show();
                 break;
         }
-    }
-
-    private void loadDummyTarget(TargetAdapter adapter) {
-        ArrayList<Target> dummyData = getDummyTarget();
-        ArrayList<Target> dummyTarget = new ArrayList<>();
-        for (Target target : dummyData){
-            if (target.getTotalSavings() < target.getSavingsTarget()) dummyTarget.add(target);
-        }
-
-        /*ArrayList<History> dummyHistory = getDummyHistory();
-        for (Target target : dummyTarget){
-            for (History history : dummyHistory){
-                if (target.getId() == history.getId_target()){
-                    target.setTotalSavings(target.getTotalSavings()+history.getNominal());
-                }
-            }
-        }*/
-
-        adapter.setData(dummyTarget);
     }
 
     @Override

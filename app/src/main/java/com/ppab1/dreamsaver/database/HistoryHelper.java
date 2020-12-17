@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import static android.provider.BaseColumns._ID;
 import static com.ppab1.dreamsaver.database.DatabaseContract.HistoryColumns;
+import static com.ppab1.dreamsaver.database.DatabaseContract.HistoryColumns.DATE;
+import static com.ppab1.dreamsaver.database.DatabaseContract.HistoryColumns.ID_TARGET;
+import static com.ppab1.dreamsaver.utils.DateUtils.getCurrentDate;
 
 // Kelas ini disebut DML (Data Manipulation Language)
 // Perintah SQL yang berhubungan dengan pengolahan data dalam tabel
@@ -58,6 +61,30 @@ public class HistoryHelper {
                 null,
                 _ID + " = ?",
                 new String[]{id},
+                null,
+                null,
+                null
+        );
+    }
+
+    Cursor queryByTargetId(String targetId){
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                ID_TARGET + " = ?",
+                new String[]{targetId},
+                null,
+                null,
+                null
+        );
+    }
+
+    Cursor queryByTargetIdToday(String targetId){
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                ID_TARGET + " = ? AND " + DATE + " = ?",
+                new String[]{targetId, getCurrentDate()},
                 null,
                 null,
                 null

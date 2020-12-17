@@ -46,7 +46,7 @@ public class DialogSaveTake extends DialogFragment implements View.OnClickListen
         View view = inflater.inflate(R.layout.dialog_save_take, null);
 
         TextView tvTitle = view.findViewById(R.id.tv_title_title);
-        tvTitle.setText("Simpan/ambil uang");
+        tvTitle.setText("Simpan/Ambil Uang");
 
         ImageButton ibBack = view.findViewById(R.id.ib_back_title);
         ibBack.setOnClickListener(this);

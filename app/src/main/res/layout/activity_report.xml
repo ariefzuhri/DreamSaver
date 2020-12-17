@@ -5,17 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.LaporanActivity">
+    tools:context=".activity.ReportActivity">
 
     <include
         android:id="@+id/title_laporan"
         layout="@layout/layout_title" />
+
     <RelativeLayout
         android:layout_below="@+id/title_laporan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:padding="16dp">
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="16dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -142,7 +144,7 @@
 
         </RelativeLayout>
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/pb_percentage_report"
             android:layout_below="@+id/layout_progress"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="0"
@@ -157,6 +159,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_report"
-        android:paddingTop="10dp"/>
-
+        android:padding="16dp"
+        android:overScrollMode="never"/>
 </LinearLayout>
