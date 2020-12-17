@@ -103,11 +103,6 @@ public class AddUpdateActivity extends AppCompatActivity implements View.OnClick
                 }
 
                 // Simpan
-                target.setName(name);
-                target.setDailyTarget(Long.parseLong(dailyTarget));
-                target.setSavingsTarget(Long.parseLong(savingsTarget));
-                target.setDateTarget(dateTarget);
-
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(TargetColumns.NAME, name);
                 contentValues.put(TargetColumns.DAILY_TARGET, dailyTarget);
