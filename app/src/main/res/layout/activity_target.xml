@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,13 +20,12 @@
         app:tabIndicatorColor="@color/white"
         app:tabIndicatorHeight="2dp"
         app:tabTextColor="@color/white"
-        android:layout_below="@id/title_layout">
-    </com.google.android.material.tabs.TabLayout>
+        android:layout_below="@id/title_layout"
+        app:tabTextAppearance="@style/TabTextAppearance"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tab_layout"
-        android:paddingVertical="24dp"/>
+        android:layout_below="@+id/tab_layout"/>
 </RelativeLayout>

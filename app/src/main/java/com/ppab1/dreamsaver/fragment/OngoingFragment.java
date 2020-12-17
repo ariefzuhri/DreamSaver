@@ -1,22 +1,11 @@
 package com.ppab1.dreamsaver.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import com.ppab1.dreamsaver.R;
-import com.ppab1.dreamsaver.adapter.TargetAdapter;
-import com.ppab1.dreamsaver.database.DatabaseContract;
-import com.ppab1.dreamsaver.model.Target;
-import com.ppab1.dreamsaver.testing.DatabaseActivity;
-import com.ppab1.dreamsaver.testing.LoadTargetCallback;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
@@ -24,17 +13,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.ppab1.dreamsaver.R;
+import com.ppab1.dreamsaver.activity.AddUpdateActivity;
+import com.ppab1.dreamsaver.adapter.TargetAdapter;
+import com.ppab1.dreamsaver.callback.TargetMoveCallback;
+import com.ppab1.dreamsaver.database.DatabaseContract;
+import com.ppab1.dreamsaver.model.Target;
+import com.ppab1.dreamsaver.testing.DatabaseActivity;
+import com.ppab1.dreamsaver.testing.LoadTargetCallback;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import static com.ppab1.dreamsaver.database.MappingHelper.mapCursorToTargetList;
 
-public class SecondTabActivity extends Fragment implements LoadTargetCallback{
+public class OngoingFragment extends Fragment implements LoadTargetCallback {
     private static final String TAG = DatabaseActivity.class.getSimpleName();
     private TargetAdapter adapter;
     private RecyclerView recyclerView;
+    private View addButton;
 
-    public SecondTabActivity() {
+    public OngoingFragment() {
         // Required empty public constructor
     }
 
@@ -52,22 +57,34 @@ public class SecondTabActivity extends Fragment implements LoadTargetCallback{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_second_tab, container, false);
-        recyclerView = view.findViewById(R.id.recycler_rencana_2);
+        View view = inflater.inflate(R.layout.fragment_ongoing, container, false);
+        recyclerView = view.findViewById(R.id.recycler_rencana);
         recyclerView.setHasFixedSize(true);
         adapter = new TargetAdapter(getActivity());
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
+        addButton = view.findViewById(R.id.addButton);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        ItemTouchHelper.Callback callback = new TargetMoveCallback(adapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(recyclerView);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddUpdateActivity.class);
+                startActivity(intent);
+            }
+        });
         HandlerThread handlerThread = new HandlerThread("DataObserver");
         handlerThread.start();
         Handler handler = new Handler(handlerThread.getLooper());
-        SecondTabActivity.DataObserver dataObserver = new SecondTabActivity.DataObserver(handler, getActivity(), this);
+        OngoingFragment.DataObserver dataObserver = new OngoingFragment.DataObserver(handler, getActivity(), this);
         getActivity().getContentResolver().registerContentObserver(DatabaseContract.TargetColumns.CONTENT_URI, true, dataObserver);
 
-        if (savedInstanceState == null) new SecondTabActivity.LoadTargetAsync(getActivity(), this).execute();
+        if (savedInstanceState == null) new OngoingFragment.LoadTargetAsync(getActivity(), this).execute();
 
         return view;
     }
@@ -135,7 +152,7 @@ public class SecondTabActivity extends Fragment implements LoadTargetCallback{
         @Override
         public void onChange(boolean selfChange) {
             super.onChange(selfChange);
-            new SecondTabActivity.LoadTargetAsync(context, callback).execute();
+            new OngoingFragment.LoadTargetAsync(context, callback).execute();
         }
     }
 }

@@ -37,6 +37,12 @@
         <item name="android:textSize">@dimen/font_nm</item>
     </style>
 
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/font_nm</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
     <style name="TextView">
         <item name="android:textColor">@color/black</item>
     </style>

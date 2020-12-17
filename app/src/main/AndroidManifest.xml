@@ -24,17 +24,21 @@
         <activity android:name=".activity.AddUpdateActivity" />
         <activity android:name=".testing.DatabaseActivity" />
         <activity android:name=".activity.AboutActivity" />
-        <activity android:name=".activity.RencanaActivity" />
+        <activity android:name=".activity.TargetActivity" />
         <activity android:name=".activity.LaporanActivity"/>
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.WelcomeActivity" />
-        <activity android:name=".testing.TestingActivity" />
+        <activity android:name=".testing.TestingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.MainActivity" />
 
         <receiver

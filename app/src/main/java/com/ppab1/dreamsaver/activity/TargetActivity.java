@@ -1,6 +1,5 @@
 package com.ppab1.dreamsaver.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -12,13 +11,14 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ppab1.dreamsaver.R;
+import com.ppab1.dreamsaver.pageradapter.TargetPagerAdapter;
 
-public class RencanaActivity extends AppCompatActivity {
+public class TargetActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rencana);
+        setContentView(R.layout.activity_target);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Berjalan"));
@@ -37,7 +37,7 @@ public class RencanaActivity extends AppCompatActivity {
         });
 
         final ViewPager viewPager = findViewById(R.id.pager);
-        PagerAdapter adapter = new com.ppab1.dreamsaver.adapter.PagerAdapter(getSupportFragmentManager(),
+        PagerAdapter adapter = new TargetPagerAdapter(getSupportFragmentManager(),
                 tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.
