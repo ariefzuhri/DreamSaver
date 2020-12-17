@@ -1,14 +1,21 @@
 package com.ppab1.dreamsaver.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,8 +24,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
+import com.ppab1.dreamsaver.activity.AboutActivity;
 import com.ppab1.dreamsaver.activity.LaporanActivity;
 import com.ppab1.dreamsaver.activity.MainActivity;
+import com.ppab1.dreamsaver.activity.TargetActivity;
 import com.ppab1.dreamsaver.callback.TargetMoveCallback;
 import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
 import com.ppab1.dreamsaver.dialog.DialogSaveTake;
@@ -31,6 +40,7 @@ import java.util.Collections;
 import static com.ppab1.dreamsaver.activity.AddUpdateActivity.EXTRA_TARGET;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRemainingDays;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRupiahFormat;
+import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
 import static com.ppab1.dreamsaver.utils.DateUtils.addDay;
 import static com.ppab1.dreamsaver.utils.DateUtils.getCurrentDate;
 import static com.ppab1.dreamsaver.utils.DateUtils.getFullDate;
@@ -111,20 +121,61 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             tvSavingsToday.setText(getRupiahFormat(savingsToday));
         }
         else {
-            holder.itemView.findViewById(R.id.ib_menu_target).setOnClickListener(new View.OnClickListener() {
+            ImageButton ibMenu = holder.itemView.findViewById(R.id.ib_menu_target);
+            if (target.getTotalSavings() == target.getSavingsTarget()) ibMenu.setVisibility(View.INVISIBLE); // Kalau sudah selesai, sembunyikan
+            ibMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(activity, AddUpdateActivity.class);
-                    intent.putExtra(EXTRA_TARGET, target);
-                    activity.startActivity(intent);
-                }
-            });
-            holder.itemView.findViewById(R.id.layout_item).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(activity, LaporanActivity.class);
-                    intent.putExtra(EXTRA_TARGET, target);
-                    activity.startActivity(intent);
+                    PopupMenu menu = new PopupMenu(activity, view);
+                    MenuInflater inflater = menu.getMenuInflater();
+                    inflater.inflate(R.menu.menu_target, menu.getMenu());
+                    menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @SuppressLint("NonConstantResourceId")
+                        @Override
+                        public boolean onMenuItemClick(MenuItem menuItem) {
+                            switch (menuItem.getItemId()){
+                                case R.id.menu_update_target:
+                                    Intent intentUpdate = new Intent(activity, AddUpdateActivity.class);
+                                    intentUpdate.putExtra(EXTRA_TARGET, target);
+                                    activity.startActivity(intentUpdate);
+                                    break;
+
+                                case R.id.menu_save_take_target:
+                                    Bundle bundle = new Bundle();
+                                    bundle.putParcelable(EXTRA_TARGET, target);
+
+                                    DialogSaveTake dialogSaveTake = new DialogSaveTake();
+                                    dialogSaveTake.setArguments(bundle);
+                                    dialogSaveTake.show(((AppCompatActivity) activity).getSupportFragmentManager(), dialogSaveTake.getTag());
+                                    break;
+
+                                case R.id.menu_report_target:
+                                    Intent intentReport = new Intent(activity, LaporanActivity.class);
+                                    intentReport.putExtra(EXTRA_TARGET, target);
+                                    activity.startActivity(intentReport);
+                                    break;
+
+                                case R.id.menu_delete_target:
+                                    new AlertDialog.Builder(activity)
+                                            .setTitle("Hapus rencana")
+                                            .setMessage("Apakah Anda yakin ingin menghapus rencana/target ini?")
+                                            .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                    Uri uri = Uri.parse(TargetColumns.CONTENT_URI + "/" + target.getId());
+                                                    activity.getContentResolver().delete(uri, null, null);
+                                                    showToast(activity, "Rencana berhasil dihapus");
+                                                }
+                                            })
+                                            .setNegativeButton("Tidak", null)
+                                            .setNeutralButton("Batal", null)
+                                            .create().show();
+                                    break;
+                            }
+                            return false;
+                        }
+                    });
+                    menu.show();
                 }
             });
         }
