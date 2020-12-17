@@ -62,6 +62,16 @@ public class DateUtils {
         } else return null;
     }
 
+    // Konversi waktu ke array
+    public static int[] getArrayTime(String time){
+        if (isValidTimeFormat(time)){
+            String[] stringArrayTime = time.split(":");
+            int[] integerArrayTime = new int[2];
+            for (int i = 0; i < 2; i++) integerArrayTime[i] = Integer.parseInt(stringArrayTime[i]);
+            return new int[] {integerArrayTime[0], integerArrayTime[1]};
+        } else return null;
+    }
+
     /*
      * Fungsi private
      * */
@@ -72,6 +82,19 @@ public class DateUtils {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, locale);
                 dateFormat.parse(date);
+                return true;
+            } catch (ParseException e) {
+                return false;
+            }
+        } else return false;
+    }
+
+    // Mengecek apakah waktu sudah sesuai dengan format
+    private static boolean isValidTimeFormat(String time){
+        if (time != null){
+            try {
+                SimpleDateFormat timeFormat = new SimpleDateFormat(TIME_FORMAT, locale);
+                timeFormat.parse(time);
                 return true;
             } catch (ParseException e) {
                 return false;

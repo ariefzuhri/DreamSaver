@@ -20,15 +20,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamSaver"
         tools:ignore="AllowBackup">
+        <activity android:name=".activity.SettingActivity"></activity>
         <activity android:name=".activity.IntroActivity" />
         <activity android:name=".activity.AddUpdateActivity" />
         <activity android:name=".testing.DatabaseActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.TargetActivity" />
-        <activity android:name=".activity.ReportActivity"/>
+        <activity android:name=".activity.ReportActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,6 +38,7 @@
         <activity android:name=".testing.TestingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

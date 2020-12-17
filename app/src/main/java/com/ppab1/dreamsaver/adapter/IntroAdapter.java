@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
-import com.ppab1.dreamsaver.data.ItemIntro;
+import com.ppab1.dreamsaver.model.Intro;
 
 import java.util.List;
 
 public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.IntroViewHolder>{
 
-    private List<ItemIntro> itemIntros;
+    private List<Intro> intros;
 
-    public IntroAdapter(List<ItemIntro> itemIntros) {
-        this.itemIntros = itemIntros;
+    public IntroAdapter(List<Intro> intros) {
+        this.intros = intros;
     }
 
     @NonNull
@@ -34,12 +34,12 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.IntroViewHol
 
     @Override
     public void onBindViewHolder(@NonNull IntroViewHolder holder, int position) {
-        holder.setIntroData(itemIntros.get(position));
+        holder.setIntroData(intros.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return itemIntros.size();
+        return intros.size();
     }
 
     class IntroViewHolder extends RecyclerView.ViewHolder{
@@ -55,10 +55,10 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.IntroViewHol
             imageIntro = itemView.findViewById(R.id.imageIntro);
         }
 
-        void setIntroData(ItemIntro itemIntro){
-            textTitle.setText(itemIntro.getTitle());
-            textDescription.setText(itemIntro.getDescription());
-            imageIntro.setImageResource(itemIntro.getImage());
+        void setIntroData(Intro intro){
+            textTitle.setText(intro.getTitle());
+            textDescription.setText(intro.getDescription());
+            imageIntro.setImageResource(intro.getImage());
         }
 
     }

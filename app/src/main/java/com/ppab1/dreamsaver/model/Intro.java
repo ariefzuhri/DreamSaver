@@ -1,6 +1,6 @@
-package com.ppab1.dreamsaver.data;
+package com.ppab1.dreamsaver.model;
 
-public class ItemIntro {
+public class Intro {
 
     private int image;
     private String title;

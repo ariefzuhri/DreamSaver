@@ -32,7 +32,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import static com.ppab1.dreamsaver.database.MappingHelper.mapCursorToTargetList;
-import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, LoadTargetCallback {
     private static final String TAG = DatabaseActivity.class.getSimpleName();
@@ -40,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TargetAdapter adapter;
     private PopupMenu menu;
     private ImageButton btnMenu;
+    private DotsIndicator dots;
+    private ViewPager2 viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         adapter = new TargetAdapter(this);
         adapter.notifyDataSetChanged();
 
-        ViewPager2 viewPager = findViewById(R.id.vp_target_main);
+        viewPager = findViewById(R.id.vp_target_main);
         viewPager.setAdapter(adapter);
 
-        DotsIndicator dots = findViewById(R.id.dots_target_main);
+        dots = findViewById(R.id.dots_target_main);
         dots.setViewPager2(viewPager);
 
         // Disable overscroll animation
@@ -90,7 +91,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
 
                     case R.id.menu_settings_main:
-                        showToast(MainActivity.this, getString(R.string.title_settings));
+                        Intent intentSetting = new Intent(MainActivity.this, SettingActivity.class);
+                        startActivity(intentSetting);
                         break;
 
                     case R.id.menu_about_main:
@@ -128,6 +130,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         adapter.setData(targetList);
+        viewPager.refreshDrawableState();
+        dots.refreshDrawableState();
     }
 
     private static class LoadTargetAsync extends AsyncTask<Void, Void, ArrayList<Target>> {

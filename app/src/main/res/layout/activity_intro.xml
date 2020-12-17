@@ -1,68 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_layout_main"
     tools:context=".activity.IntroActivity">
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_next_intro_testing"
-        style="@style/Button"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_intro_next"
-        android:drawableEnd="@drawable/ic_baseline_chevron_right_24_white"
-        android:textColor="@color/white"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Mulai"/>
-
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/introViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/dots_target_intro"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/layout"/>
 
-    <LinearLayout
-        android:id="@+id/layoutIntroIndicators"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:padding="15dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_alignParentBottom="true">
 
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/dots_target_intro"
+            style="@style/DotsIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:progressMode="false"
+            android:layout_alignParentBottom="true"
+            android:paddingVertical="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="78dp"
+            android:layout_marginBottom="23dp"/>
 
-    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-        android:id="@+id/dots_target_intro"
-        style="@style/DotsIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:progressMode="false"
-        android:layout_alignParentBottom="true"
-        android:paddingVertical="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginLeft="78dp"
-        android:layout_marginBottom="23dp"/>
+        <ImageButton
+            android:id="@+id/btn_prev_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_intro_prev"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="37dp"
+            tools:ignore="MissingConstraints" />
 
-    <ImageButton
-        android:id="@+id/btn_prev_intro_testing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_intro_prev"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="37dp"
-        tools:ignore="MissingConstraints" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_next_intro"
+            style="@style/Button"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_intro_next"
+            android:drawableEnd="@drawable/ic_baseline_chevron_right_24_white"
+            android:textColor="@color/white"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Mulai"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

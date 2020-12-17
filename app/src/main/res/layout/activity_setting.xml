@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.SettingActivity">
+
+    <include
+        layout="@layout/layout_title"
+        android:id="@+id/title_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <CheckBox
+            android:id="@+id/cb_reminder_setting"
+            style="@style/TextView.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hidupkan pengingat menabung"
+            android:textSize="@dimen/font_nm"/>
+
+        <LinearLayout
+            android:id="@+id/btn_reminder_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="42dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                style="@style/TextView.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_nm"
+                android:text="Atur jam pengingat"
+                android:textColor="@color/blue"/>
+
+            <TextView
+                android:id="@+id/tv_reminder_setting"
+                style="@style/TextView.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_nm"
+                android:text="@string/loading"
+                android:textAlignment="textEnd"
+                android:textColor="@color/blue"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

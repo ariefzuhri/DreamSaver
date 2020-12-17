@@ -14,6 +14,7 @@ import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
 import com.ppab1.dreamsaver.helper.DateHelper;
 import com.ppab1.dreamsaver.helper.DatePickerFragment;
+import com.ppab1.dreamsaver.preference.FirstTimeLaunchPreference;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -74,6 +75,10 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
                 contentValues.put(TargetColumns.TOTAL_SAVINGS, 0);
 
                 getContentResolver().insert(TargetColumns.CONTENT_URI, contentValues);
+
+                FirstTimeLaunchPreference firstTimeLaunchPreference = new FirstTimeLaunchPreference(this);
+                firstTimeLaunchPreference.setIsFirstTimeLaunch(false);
+
                 startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
                 finish();
                 break;
