@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -82,7 +83,8 @@ public class ReportActivity extends AppCompatActivity implements LoadHistoryCall
             tvRemainingDaysReport.setText(String.valueOf(remainingDays));
             tvRemainingDateReport.setText(getFullDate(addDay(getCurrentDate(), remainingDays), false));
 
-            progressBar.setProgress((int) (target.getTotalSavings()/target.getSavingsTarget()));
+            Log.d(getClass().getSimpleName(), String.valueOf(((double) target.getTotalSavings()/(double) target.getSavingsTarget())*100));
+            progressBar.setProgress((int) (((double) target.getTotalSavings()/(double) target.getSavingsTarget())*100));
             tvPercentageReport.setText(progressBar.getProgress() + "%");
         }
 

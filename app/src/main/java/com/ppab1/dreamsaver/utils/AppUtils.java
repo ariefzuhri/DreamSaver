@@ -20,6 +20,8 @@ public class AppUtils {
 
     // Mendapatkan sisa hari
     public static int getRemainingDays(long savingsTarget, long totalSavings, long dailyTarget){
-        return (int) Math.ceil(((double) savingsTarget - (double) totalSavings)/(double) dailyTarget);
+        int remainingDays = (int) Math.ceil(((double) savingsTarget - (double) totalSavings)/(double) dailyTarget);
+        if (remainingDays < 0) remainingDays = 0;
+        return remainingDays;
     }
 }

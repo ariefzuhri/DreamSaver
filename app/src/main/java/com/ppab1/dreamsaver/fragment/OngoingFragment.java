@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -108,7 +109,8 @@ public class OngoingFragment extends Fragment implements LoadTargetCallback {
         @Override
         protected ArrayList<Target> doInBackground(Void... voids) {
             ArrayList<Target> targetList = new ArrayList<>();
-            Cursor cursor = weakContext.get().getContentResolver().query(DatabaseContract.TargetColumns.CONTENT_URI,
+            Uri uri = Uri.parse(DatabaseContract.TargetColumns.CONTENT_URI + "/status/false"); // isFinished = false
+            Cursor cursor = weakContext.get().getContentResolver().query(uri,
                     null, null, null, null);
 
             if (cursor != null){

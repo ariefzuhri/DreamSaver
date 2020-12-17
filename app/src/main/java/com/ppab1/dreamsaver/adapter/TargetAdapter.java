@@ -34,6 +34,7 @@ import com.ppab1.dreamsaver.dialog.DialogSaveTake;
 import com.ppab1.dreamsaver.model.History;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.activity.AddUpdateActivity;
+import com.ppab1.dreamsaver.preference.UserPreference;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -132,18 +133,27 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
                 else tvNotification.setText(R.string.notification_2_target);
             }
 
-            tvReminder.setText("12:00");
+            tvReminder.setText(new UserPreference(activity).getReminder());
             tvSavingsToday.setText(getRupiahFormat(savingsToday));
         }
         else {
             ImageButton ibMenu = holder.itemView.findViewById(R.id.ib_menu_target);
-            if (target.getTotalSavings() >= target.getSavingsTarget()) ibMenu.setVisibility(View.INVISIBLE); // Kalau sudah selesai, sembunyikan
+
             ibMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     PopupMenu menu = new PopupMenu(activity, view);
                     MenuInflater inflater = menu.getMenuInflater();
                     inflater.inflate(R.menu.menu_target, menu.getMenu());
+
+                    // Kalau sudah selesai, sembunyikan beberapa menu
+                    if (target.getTotalSavings() >= target.getSavingsTarget()) {
+                        MenuItem menuUpdate = menu.getMenu().findItem(R.id.menu_update_target);
+                        MenuItem menuSaveTake = menu.getMenu().findItem(R.id.menu_save_take_target);
+                        menuUpdate.setVisible(false);
+                        menuSaveTake.setVisible(false);
+                    }
+
                     menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @SuppressLint("NonConstantResourceId")
                         @Override

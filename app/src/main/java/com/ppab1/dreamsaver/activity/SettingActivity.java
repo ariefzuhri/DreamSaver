@@ -30,6 +30,8 @@ import static com.ppab1.dreamsaver.utils.DateUtils.getArrayTime;
 public class SettingActivity extends AppCompatActivity implements TimePickerFragment.DialogTimeListener {
     private final String TIME_PICKER_TAG = "time_picker";
     private TextView tvReminder;
+    private UserPreference userPreference;
+    private CheckBox cbReminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +51,9 @@ public class SettingActivity extends AppCompatActivity implements TimePickerFrag
 
         CheckBox cbReminder = findViewById(R.id.cb_reminder_setting);
         LinearLayout btnReminder = findViewById(R.id.btn_reminder_setting);
-        tvReminder = findViewById(R.id.tv_reminder_target);
+        tvReminder = findViewById(R.id.tv_reminder_setting);
 
-        UserPreference userPreference = new UserPreference(this);
+        userPreference = new UserPreference(this);
         cbReminder.setChecked(userPreference.isEnableReminder());
         tvReminder.setText(userPreference.getReminder());
 
@@ -62,7 +64,7 @@ public class SettingActivity extends AppCompatActivity implements TimePickerFrag
                 userPreference.setReminder(tvReminder.getText().toString());
 
                 if (isChecked){
-                    new DailyReminder().setDailyReminder(SettingActivity.this, "Jangan Lupa Menabung", "Jangan lupa perbarui tabunganmu.");
+                    new DailyReminder().setDailyReminder(SettingActivity.this, userPreference.getReminder(), "Jangan Lupa Menabung", "Perbarui tabunganmu hari ini.");
                     showToast(SettingActivity.this, "Pengaturan reminder dihidupkan pukul " + userPreference.getReminder());
                 } else {
                     cancelReminder(SettingActivity.this, REQUEST_DAILY_REMINDER);
@@ -88,6 +90,11 @@ public class SettingActivity extends AppCompatActivity implements TimePickerFrag
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(TIME_FORMAT, Locale.getDefault());
-        tvReminder.setText(simpleDateFormat.format(calendar.getTime()));
+        userPreference.setReminder(simpleDateFormat.format(calendar.getTime()));
+        tvReminder.setText(userPreference.getReminder());
+
+        if (cbReminder.isChecked()){
+            new DailyReminder().setDailyReminder(SettingActivity.this, userPreference.getReminder(),"Jangan Lupa Menabung", "Perbarui tabunganmu hari ini.");
+        }
     }
 }

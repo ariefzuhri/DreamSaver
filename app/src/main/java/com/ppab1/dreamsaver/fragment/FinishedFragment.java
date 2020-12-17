@@ -3,6 +3,7 @@ package com.ppab1.dreamsaver.fragment;
 import android.content.Context;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import com.ppab1.dreamsaver.R;
@@ -92,7 +93,8 @@ public class FinishedFragment extends Fragment implements LoadTargetCallback{
         @Override
         protected ArrayList<Target> doInBackground(Void... voids) {
             ArrayList<Target> targetList = new ArrayList<>();
-            Cursor cursor = weakContext.get().getContentResolver().query(DatabaseContract.TargetColumns.CONTENT_URI,
+            Uri uri = Uri.parse(DatabaseContract.TargetColumns.CONTENT_URI + "/status/true"); // isFinished = true
+            Cursor cursor = weakContext.get().getContentResolver().query(uri,
                     null, null, null, null);
 
             if (cursor != null){

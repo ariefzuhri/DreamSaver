@@ -16,6 +16,8 @@ import static com.ppab1.dreamsaver.database.DatabaseContract.AUTHORITY;
 public class DatabaseProvider extends ContentProvider {
     private static final int TARGET = 100;
     private static final int TARGET_ID = 101;
+    private static final int TARGET_STATUS = 102;
+
     private static final int HISTORY = 200;
     private static final int HISTORY_ID = 201;
     private static final int HISTORY_TARGET_ID = 202;
@@ -29,6 +31,8 @@ public class DatabaseProvider extends ContentProvider {
     static {
         uriMatcher.addURI(AUTHORITY, TargetColumns.TABLE_NAME, TARGET);
         uriMatcher.addURI(AUTHORITY, TargetColumns.TABLE_NAME + "/#", TARGET_ID);
+        uriMatcher.addURI(AUTHORITY, TargetColumns.TABLE_NAME + "/status/*", TARGET_STATUS);
+
         uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME, HISTORY);
         uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/#", HISTORY_ID);
         uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/targetId/#", HISTORY_TARGET_ID);
@@ -60,6 +64,11 @@ public class DatabaseProvider extends ContentProvider {
 
             case TARGET_ID:
                 cursor = targetHelper.queryById(uri.getLastPathSegment());
+                break;
+
+            case TARGET_STATUS:
+                boolean isFinished = uri.getLastPathSegment().equals("true");
+                cursor = targetHelper.queryByStatus(isFinished);
                 break;
 
             case HISTORY:

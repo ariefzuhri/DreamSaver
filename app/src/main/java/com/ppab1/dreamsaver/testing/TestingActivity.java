@@ -52,7 +52,7 @@ public class TestingActivity extends AppCompatActivity {
         btnEnableReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DailyReminder().setDailyReminder(TestingActivity.this, dummyTitle, dummyMessage);
+                new DailyReminder().setDailyReminder(TestingActivity.this, "12:00", dummyTitle, dummyMessage);
                 showToast(TestingActivity.this, "Reminder dihidupkan pukul 12:00 setiap hari");
             }
         });

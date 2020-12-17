@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -152,7 +153,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected ArrayList<Target> doInBackground(Void... voids) {
             ArrayList<Target> targetList = new ArrayList<>();
-            Cursor cursor = weakContext.get().getContentResolver().query(TargetColumns.CONTENT_URI,
+            Uri uri = Uri.parse(TargetColumns.CONTENT_URI + "/status/false"); // isFinished = false
+            Cursor cursor = weakContext.get().getContentResolver().query(uri,
                     null, null, null, null);
 
             if (cursor != null){

@@ -15,6 +15,7 @@ import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
 import com.ppab1.dreamsaver.helper.DateHelper;
 import com.ppab1.dreamsaver.helper.DatePickerFragment;
 import com.ppab1.dreamsaver.preference.FirstTimeLaunchPreference;
+import com.ppab1.dreamsaver.reminder.DailyReminder;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -78,6 +79,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
                 FirstTimeLaunchPreference firstTimeLaunchPreference = new FirstTimeLaunchPreference(this);
                 firstTimeLaunchPreference.setIsFirstTimeLaunch(false);
+
+                // Atur reminder secara default
+                new DailyReminder().setDailyReminder(this,"12:00","Jangan Lupa Menabung", "Perbarui tabunganmu hari ini.");
 
                 startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
                 finish();

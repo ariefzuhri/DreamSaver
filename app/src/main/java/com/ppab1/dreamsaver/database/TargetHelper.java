@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import static android.provider.BaseColumns._ID;
 import static com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
+import static com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns.POSITION;
+import static com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns.SAVINGS_TARGET;
+import static com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns.TOTAL_SAVINGS;
 
 // Kelas ini disebut DML (Data Manipulation Language)
 // Perintah SQL yang berhubungan dengan pengolahan data dalam tabel
@@ -48,7 +51,7 @@ public class TargetHelper {
                 null,
                 null,
                 null,
-                TargetColumns.POSITION + " ASC"
+                POSITION + " ASC"
         );
     }
 
@@ -60,24 +63,25 @@ public class TargetHelper {
                 new String[]{id},
                 null,
                 null,
-                TargetColumns.POSITION + " ASC"
+                POSITION + " ASC"
         );
     }
 
-    /*Cursor queryByStatus(boolean isAchieved){
-        *//*String selection;
-        if (isAchieved) selection = 0;*//*
+    Cursor queryByStatus(boolean isFinished){
+        String selection;
+        if (isFinished) selection = TOTAL_SAVINGS + " - " + SAVINGS_TARGET + " >= ?";
+        else selection =  TOTAL_SAVINGS + " - " + SAVINGS_TARGET + " < ?";
 
         return database.query(
                 DATABASE_TABLE,
                 null,
-                SAVINGS_TARGET + " - " + TOTAL_SAVINGS + " = ?",
+                selection,
                 new String[]{"0"},
                 null,
                 null,
                 POSITION + " ASC"
         );
-    }*/
+    }
 
     long insert(ContentValues contentValues){
         return database.insert(

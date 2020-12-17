@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.ppab1.dreamsaver.R;
+import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
 import com.ppab1.dreamsaver.database.DatabaseContract.HistoryColumns;
 import com.ppab1.dreamsaver.model.Target;
 
@@ -100,6 +102,9 @@ public class DialogSaveTake extends DialogFragment implements View.OnClickListen
                 if (isZero(getFixText(edtNominal))){
                     edtNominal.setError("Angka harus lebih dari nol");
                     return;
+                } else if (!isSave && Math.abs(Long.parseLong(nominal)) > target.getTotalSavings()){
+                    edtNominal.setError("Uang pada tabungan Anda " + getRupiahFormat(target.getTotalSavings()) + " tidak mencukupi");
+                    return;
                 }
             }
 
@@ -118,6 +123,19 @@ public class DialogSaveTake extends DialogFragment implements View.OnClickListen
 
             getActivity().getContentResolver().insert(HistoryColumns.CONTENT_URI, contentValues);
 
+            // Perbarui total savings
+            ContentValues contentValuesTarget = new ContentValues();
+            contentValuesTarget.put(TargetColumns.NAME, target.getName());
+            contentValuesTarget.put(TargetColumns.DAILY_TARGET, target.getDailyTarget());
+            contentValuesTarget.put(TargetColumns.SAVINGS_TARGET, target.getSavingsTarget());
+            contentValuesTarget.put(TargetColumns.DATE_TARGET, target.getDateTarget());
+            contentValuesTarget.put(TargetColumns.POSITION, target.getPosition());
+            contentValuesTarget.put(TargetColumns.TOTAL_SAVINGS, target.getTotalSavings() + Long.parseLong(nominal)); // Ini
+
+            Uri uri = Uri.parse(TargetColumns.CONTENT_URI + "/" + target.getId());
+            getActivity().getContentResolver().update(uri, contentValuesTarget, null, null);
+
+            // Tampilkan pesan
             String message;
             if (isSave) message = "Kamu berhasil menabung " + getRupiahFormat(Long.parseLong(nominal)) + " untuk tabungan " + target.getName();
             else  message = "Kamu berhasil mengambil uang " + getRupiahFormat(Math.abs(Long.parseLong(nominal))) + " dari tabungan " + target.getName();
