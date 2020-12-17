@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
+import com.ppab1.dreamsaver.activity.LaporanActivity;
 import com.ppab1.dreamsaver.activity.MainActivity;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.activity.AddUpdateActivity;
@@ -99,14 +100,21 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             tvSavingsToday.setText(getRupiahFormat(savingsToday));
         }
         else {
-            holder.itemView.findViewById(R.id.ib_menu_target).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(activity, AddUpdateActivity.class);
-                    intent.putExtra(EXTRA_TARGET, target);
-                    activity.startActivity(intent);
-                }
-            });
+                    holder.itemView.findViewById(R.id.ib_menu_target).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(activity, AddUpdateActivity.class);
+                        intent.putExtra(EXTRA_TARGET, target);
+                        activity.startActivity(intent);
+                    }
+                });
+                    holder.itemView.findViewById(R.id.layout_item).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(activity, LaporanActivity.class);
+                            activity.startActivity(intent);
+                        }
+                    });
         }
     }
 

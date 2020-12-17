@@ -20,11 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamSaver"
         tools:ignore="AllowBackup">
-        <activity android:name=".activity.IntroActivity"></activity>
+        <activity android:name=".activity.IntroActivity" />
         <activity android:name=".activity.AddUpdateActivity" />
         <activity android:name=".testing.DatabaseActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.RencanaActivity" />
+        <activity android:name=".activity.LaporanActivity"/>
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
