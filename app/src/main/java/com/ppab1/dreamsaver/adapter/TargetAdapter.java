@@ -147,6 +147,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             tvDailyTarget = itemView.findViewById(R.id.tv_daily_target_target);
             tvDateTarget = itemView.findViewById(R.id.tv_date_target_target);
 
+
             tvRemainingDays = itemView.findViewById(R.id.tv_remaining_days_target);
             tvRemainingDate = itemView.findViewById(R.id.tv_remaining_date_target);
         }

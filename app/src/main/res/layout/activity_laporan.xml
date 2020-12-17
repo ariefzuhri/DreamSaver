@@ -65,7 +65,7 @@
             android:layout_toRightOf="@+id/tv_date_report"
             android:layout_below="@+id/tv_target_report_target"
             android:textColor="@color/white"
-            android:text="Rp0"
+            android:text="Memuat"
             android:paddingLeft="77dp"
             style="@style/TextView.Regular"/>
         <TextView
@@ -110,7 +110,7 @@
             android:text="Memuat"
             style="@style/TextView.Regular"
             android:textSize="@dimen/font_sm"
-            android:id="@+id/tv_date_report_report"/>
+            android:id="@+id/tv_remaining_date_report"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,8 +119,17 @@
             style="@style/TextView.Regular"
             android:paddingHorizontal="5dp"
             android:textSize="@dimen/font_sm"
-            android:layout_toLeftOf="@+id/tv_remaining_days_report"
+            android:layout_toLeftOf="@+id/tv_remaining"
             android:id="@+id/tv_counter"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="H-"
+            style="@style/TextView.Regular"
+            android:textSize="@dimen/font_sm"
+            android:layout_toLeftOf="@+id/tv_remaining_days_report"
+            android:id="@+id/tv_remaining"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
