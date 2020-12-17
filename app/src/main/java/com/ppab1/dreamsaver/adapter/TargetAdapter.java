@@ -51,6 +51,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
         return targetList;
     }
 
+
     @NonNull
     @Override
     public TargetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

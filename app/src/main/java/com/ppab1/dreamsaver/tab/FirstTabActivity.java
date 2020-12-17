@@ -34,12 +34,7 @@ import static com.ppab1.dreamsaver.database.MappingHelper.mapCursorToTargetList;
 public class FirstTabActivity extends Fragment implements LoadTargetCallback {
     private static final String TAG = DatabaseActivity.class.getSimpleName();
     private TargetAdapter adapter;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private ArrayList<ItemData> itemValues;
     private RecyclerView recyclerView;
-    private ItemAdapter itemAdapter;
     private View addButton;
 
     public FirstTabActivity() {
@@ -54,10 +49,6 @@ public class FirstTabActivity extends Fragment implements LoadTargetCallback {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
-
-
     }
 
     @Override
@@ -78,7 +69,8 @@ public class FirstTabActivity extends Fragment implements LoadTargetCallback {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addData();
+                Intent intent = new Intent(getActivity(), AddUpdateActivity.class);
+                startActivity(intent);
             }
         });
         HandlerThread handlerThread = new HandlerThread("DataObserver");
@@ -90,10 +82,6 @@ public class FirstTabActivity extends Fragment implements LoadTargetCallback {
         if (savedInstanceState == null) new FirstTabActivity.LoadTargetAsync(getActivity(), this).execute();
 
         return view;
-    }
-    private void addData(){
-        Intent intent = new Intent(getActivity(), AddUpdateActivity.class);
-        startActivity(intent);
     }
 
     @Override
