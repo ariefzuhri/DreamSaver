@@ -1,13 +1,7 @@
 package com.ppab1.dreamsaver.tab;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import com.ppab1.dreamsaver.R;
-import com.ppab1.dreamsaver.adapter.ItemAdapter;
-import com.ppab1.dreamsaver.data.ItemData;
-
-import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;

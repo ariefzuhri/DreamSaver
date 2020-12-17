@@ -13,9 +13,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
-import com.ppab1.dreamsaver.activity.AddUpdateActivity;
 import com.ppab1.dreamsaver.activity.MainActivity;
 import com.ppab1.dreamsaver.model.Target;
+import com.ppab1.dreamsaver.activity.AddUpdateActivity;
 import com.ppab1.dreamsaver.testing.DatabaseActivity;
 
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
         String activityName = activity.getClass().getSimpleName();
 
         if (activityName.equals(MainActivity.class.getSimpleName())) resource = R.layout.item_target_main;
-        else if (activityName.equals(DatabaseActivity.class.getSimpleName())) resource = R.layout.item_target;
+        else  resource = R.layout.item_target;
 
         View view = LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
         return new TargetViewHolder(view);
@@ -97,7 +97,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             tvReminder.setText("12:00");
             tvSavingsToday.setText(getRupiahFormat(savingsToday));
         }
-        else if (activityName.equals(DatabaseActivity.class.getSimpleName())){
+        else {
             holder.itemView.findViewById(R.id.ib_menu_target).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
