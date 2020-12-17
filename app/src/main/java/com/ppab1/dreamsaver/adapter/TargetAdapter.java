@@ -2,6 +2,7 @@ package com.ppab1.dreamsaver.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,22 +10,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.activity.LaporanActivity;
 import com.ppab1.dreamsaver.activity.MainActivity;
+import com.ppab1.dreamsaver.dialog.DialogSaveTake;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.activity.AddUpdateActivity;
-import com.ppab1.dreamsaver.testing.DatabaseActivity;
 
 import java.util.ArrayList;
 
 import static com.ppab1.dreamsaver.activity.AddUpdateActivity.EXTRA_TARGET;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRemainingDays;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRupiahFormat;
-import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
 import static com.ppab1.dreamsaver.utils.DateUtils.addDay;
 import static com.ppab1.dreamsaver.utils.DateUtils.getCurrentDate;
 import static com.ppab1.dreamsaver.utils.DateUtils.getFullDate;
@@ -76,7 +77,12 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             holder.itemView.findViewById(R.id.ib_manage_savings_target).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showToast(activity, "Tambah/ambil jumlah tabungan");
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(EXTRA_TARGET, target);
+
+                    DialogSaveTake dialogSaveTake = new DialogSaveTake();
+                    dialogSaveTake.setArguments(bundle);
+                    dialogSaveTake.show(((AppCompatActivity) activity).getSupportFragmentManager(), dialogSaveTake.getTag());
                 }
             });
 
@@ -100,22 +106,22 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             tvSavingsToday.setText(getRupiahFormat(savingsToday));
         }
         else {
-                    holder.itemView.findViewById(R.id.ib_menu_target).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(activity, AddUpdateActivity.class);
-                        intent.putExtra(EXTRA_TARGET, target);
-                        activity.startActivity(intent);
-                    }
-                });
-                    holder.itemView.findViewById(R.id.layout_item).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(activity, LaporanActivity.class);
-                            intent.putExtra(EXTRA_TARGET, target);
-                            activity.startActivity(intent);
-                        }
-                    });
+            holder.itemView.findViewById(R.id.ib_menu_target).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(activity, AddUpdateActivity.class);
+                    intent.putExtra(EXTRA_TARGET, target);
+                    activity.startActivity(intent);
+                }
+            });
+            holder.itemView.findViewById(R.id.layout_item).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(activity, LaporanActivity.class);
+                    intent.putExtra(EXTRA_TARGET, target);
+                    activity.startActivity(intent);
+                }
+            });
         }
     }
 

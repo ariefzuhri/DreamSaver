@@ -18,4 +18,8 @@ public class EditTextUtils {
     public static boolean isMaxChar(EditText editText, int maxChar){
         return editText.getText().toString().trim().length() > maxChar;
     }
+
+    public static boolean isZero(String number){
+        return Integer.parseInt(number) <= 0;
+    }
 }
