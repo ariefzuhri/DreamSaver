@@ -7,8 +7,8 @@
     android:orientation="vertical">
 
     <include
-        layout="@layout/layout_title"
-        android:id="@+id/title_layout"/>
+        android:id="@+id/title_layout"
+        layout="@layout/layout_title" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
