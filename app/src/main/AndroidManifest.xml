@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ppab1.dreamsaver">
 
@@ -21,18 +20,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamSaver"
         tools:ignore="AllowBackup">
-        <activity android:name=".testing.AddUpdateTestingActivity"/>
+        <activity android:name=".activity.IntroActivity"></activity>
+        <activity android:name=".testing.AddUpdateTestingActivity" />
         <activity android:name=".testing.DatabaseActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.RencanaActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.WelcomeActivity" />
-        <activity android:name=".testing.TestingActivity"/>
+        <activity android:name=".testing.TestingActivity" />
         <activity android:name=".activity.MainActivity" />
 
         <receiver
@@ -48,4 +49,5 @@
             android:readPermission="com.ppab1.dreamsaver.READ_DATABASE"
             android:writePermission="com.ppab1.dreamsaver.WRITE_DATABASE" />
     </application>
+
 </manifest>
