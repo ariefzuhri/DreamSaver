@@ -49,7 +49,7 @@ public class SettingActivity extends AppCompatActivity implements TimePickerFrag
             }
         });
 
-        CheckBox cbReminder = findViewById(R.id.cb_reminder_setting);
+        cbReminder = findViewById(R.id.cb_reminder_setting);
         LinearLayout btnReminder = findViewById(R.id.btn_reminder_setting);
         tvReminder = findViewById(R.id.tv_reminder_setting);
 

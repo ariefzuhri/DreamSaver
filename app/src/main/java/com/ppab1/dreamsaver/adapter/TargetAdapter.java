@@ -133,7 +133,12 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
                 else tvNotification.setText(R.string.notification_2_target);
             }
 
-            tvReminder.setText(new UserPreference(activity).getReminder());
+            //tvReminder.setText(new UserPreference(activity).getReminder()); // Soalnya gak mau update realtime (sementara)
+            UserPreference userPreference = new UserPreference(activity);
+            if (userPreference.isEnableReminder()) tvReminder.setVisibility(View.VISIBLE);
+            else tvReminder.setVisibility(View.INVISIBLE);
+            tvReminder.setText("");
+
             tvSavingsToday.setText(getRupiahFormat(savingsToday));
         }
         else {
