@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.menu_manage_target_main:
-                        Intent intent1 = new Intent(MainActivity.this, RencanaActivity.class);
-                        startActivity(intent1);
+                        Intent intentTarget = new Intent(MainActivity.this, RencanaActivity.class);
+                        startActivity(intentTarget);
                         break;
 
                     case R.id.menu_settings_main:
@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
 
                     case R.id.menu_about_main:
-                        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-                        startActivity(intent);
+                        Intent intentAbout = new Intent(MainActivity.this, AboutActivity.class);
+                        startActivity(intentAbout);
                         break;
                 }
                 return false;
@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ib_add_main:
-                showToast(MainActivity.this, getString(R.string.title_add_aut));
+                Intent intent = new Intent(MainActivity.this, AddUpdateActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.ib_menu_main:

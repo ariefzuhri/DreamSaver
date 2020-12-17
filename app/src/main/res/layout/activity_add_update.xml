@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".testing.AddUpdateTestingActivity"
+    tools:context=".activity.AddUpdateActivity"
     android:orientation="vertical">
+
+    <include layout="@layout/layout_title" />
 
     <include layout="@layout/layout_form_au"/>
 </LinearLayout>

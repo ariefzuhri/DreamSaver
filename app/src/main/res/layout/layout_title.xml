@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_keyboard_backspace_24_white"
-        android:contentDescription="@string/title_add_aut" />
+        android:contentDescription="@string/title_add_au" />
 
     <TextView
         android:id="@+id/tv_title_title"

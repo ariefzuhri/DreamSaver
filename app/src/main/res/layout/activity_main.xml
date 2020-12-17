@@ -23,7 +23,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/ic_baseline_add_24_white"
             android:layout_alignParentStart="true"
-            android:contentDescription="@string/title_add_aut" />
+            android:contentDescription="@string/title_add_au" />
 
         <ImageButton
             android:id="@+id/ib_menu_main"

@@ -51,12 +51,8 @@ public class DateUtils {
         return "-1";
     }
 
-    /*
-    * Fungsi private
-    * */
-
     // Konversi tanggal ke array
-    private static int[] getArrayDate(String date){
+    public static int[] getArrayDate(String date){
         if (isValidDateFormat(date)){
             String[] stringArrayDate = date.split("-");
             int[] integerArrayDate = new int[3];
@@ -65,6 +61,10 @@ public class DateUtils {
             return new int[] {integerArrayDate[0], integerArrayDate[1]-1, integerArrayDate[2]};
         } else return null;
     }
+
+    /*
+     * Fungsi private
+     * */
 
     // Mengecek apakah tanggal sudah sesuai dengan format
     private static boolean isValidDateFormat(String date){

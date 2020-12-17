@@ -13,14 +13,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
+import com.ppab1.dreamsaver.activity.AddUpdateActivity;
 import com.ppab1.dreamsaver.activity.MainActivity;
 import com.ppab1.dreamsaver.model.Target;
-import com.ppab1.dreamsaver.testing.AddUpdateTestingActivity;
 import com.ppab1.dreamsaver.testing.DatabaseActivity;
 
 import java.util.ArrayList;
 
-import static com.ppab1.dreamsaver.testing.AddUpdateTestingActivity.EXTRA_TARGET;
+import static com.ppab1.dreamsaver.activity.AddUpdateActivity.EXTRA_TARGET;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRemainingDays;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRupiahFormat;
 import static com.ppab1.dreamsaver.utils.AppUtils.showToast;
@@ -101,7 +101,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             holder.itemView.findViewById(R.id.ib_menu_target).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(activity, AddUpdateTestingActivity.class);
+                    Intent intent = new Intent(activity, AddUpdateActivity.class);
                     intent.putExtra(EXTRA_TARGET, target);
                     activity.startActivity(intent);
                 }

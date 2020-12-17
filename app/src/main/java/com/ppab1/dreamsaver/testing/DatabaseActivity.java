@@ -17,6 +17,7 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ppab1.dreamsaver.R;
+import com.ppab1.dreamsaver.activity.AddUpdateActivity;
 import com.ppab1.dreamsaver.adapter.TargetAdapter;
 import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
 import com.ppab1.dreamsaver.model.Target;
@@ -46,7 +47,7 @@ public class DatabaseActivity extends AppCompatActivity implements LoadTargetCal
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DatabaseActivity.this, AddUpdateTestingActivity.class);
+                Intent intent = new Intent(DatabaseActivity.this, AddUpdateActivity.class);
                 startActivity(intent);
             }
         });

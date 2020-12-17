@@ -20,12 +20,12 @@
     <!-- MainActivity -->
     <string name="cd_menu_main">Menu utama</string>
 
-    <!-- ManageTargetActivity -->
-    <string name="title_manage_target">Kelola Rencana</string>
+    <!-- TargetActivity -->
+    <string name="title_target">Kelola Rencana</string>
 
-    <!-- AddUpdateTarget -->
-    <string name="title_add_aut">Tambah Rencana Tabungan</string>
-    <string name="title_update_aut">Edit Rencana Tabungan</string>
+    <!-- AddUpdate -->
+    <string name="title_add_au">Tambah Rencana Tabungan</string>
+    <string name="title_update_au">Edit Rencana Tabungan</string>
 
     <!-- SettingsActivity -->
     <string name="title_settings">Setelan</string>

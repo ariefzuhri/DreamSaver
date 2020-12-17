@@ -20,8 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamSaver"
         tools:ignore="AllowBackup">
-        <activity android:name=".activity.IntroActivity"></activity>
-        <activity android:name=".testing.AddUpdateTestingActivity" />
+        <activity android:name=".activity.AddUpdateActivity"/>
+        <activity android:name=".activity.IntroActivity" />
         <activity android:name=".testing.DatabaseActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.RencanaActivity" />
@@ -33,7 +33,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.WelcomeActivity" />
-        <activity android:name=".testing.TestingActivity" />
+        <activity android:name=".testing.TestingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.MainActivity" />
 
         <receiver

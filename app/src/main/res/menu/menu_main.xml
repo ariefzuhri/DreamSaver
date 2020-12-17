@@ -5,7 +5,7 @@
 
     <item
         android:id="@+id/menu_manage_target_main"
-        android:title="@string/title_manage_target"
+        android:title="@string/title_target"
         app:showAsAction="never"/>
 
     <item
