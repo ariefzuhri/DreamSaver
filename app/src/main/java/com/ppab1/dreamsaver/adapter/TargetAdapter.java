@@ -17,11 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.activity.LaporanActivity;
 import com.ppab1.dreamsaver.activity.MainActivity;
+import com.ppab1.dreamsaver.callback.TargetMoveCallback;
 import com.ppab1.dreamsaver.dialog.DialogSaveTake;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.activity.AddUpdateActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.ppab1.dreamsaver.activity.AddUpdateActivity.EXTRA_TARGET;
 import static com.ppab1.dreamsaver.utils.AppUtils.getRemainingDays;
@@ -30,7 +32,7 @@ import static com.ppab1.dreamsaver.utils.DateUtils.addDay;
 import static com.ppab1.dreamsaver.utils.DateUtils.getCurrentDate;
 import static com.ppab1.dreamsaver.utils.DateUtils.getFullDate;
 
-public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetViewHolder> {
+public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetViewHolder> implements TargetMoveCallback.ItemTouchHelperContract {
     private static final String TAG = TargetAdapter.class.getSimpleName();
     private final Activity activity;
     private final ArrayList<Target> targetList = new ArrayList<>();
@@ -157,5 +159,26 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             tvRemainingDays.setText(String.valueOf(remainingDays));
             tvRemainingDate.setText(getFullDate(addDay(getCurrentDate(), remainingDays), false));
         }
+    }
+
+    @Override
+    // Metode ini terpanggil ketika item dipindah (setelah drag dan drop)
+    public void onRowMoved(int fromPosition, int toPosition) {
+        if (fromPosition < toPosition)
+            for (int i = fromPosition; i < toPosition; i++) Collections.swap(targetList, i, i+1); // Jika posisinya jadi maju, swap terus-menerus sampai posisi yang sesuai
+        else for (int i = fromPosition; i > toPosition; i--) Collections.swap(targetList, i, i-1); // mundur
+        notifyItemMoved(fromPosition, toPosition); // Refresh adapter karena ada item yang berubah posisi
+    }
+
+    @Override
+    // Metode ini terpanggil ketika mulai dan sedang drag
+    public void onRowSelected(TargetViewHolder viewHolder) {
+        viewHolder.itemView.setBackgroundColor(activity.getResources().getColor(R.color.gray));
+    }
+
+    @Override
+    // Metode ini terpanggil ketika selesai men-drag
+    public void onRowClear(TargetViewHolder viewHolder) {
+        viewHolder.itemView.setBackgroundColor(activity.getResources().getColor(R.color.white));
     }
 }

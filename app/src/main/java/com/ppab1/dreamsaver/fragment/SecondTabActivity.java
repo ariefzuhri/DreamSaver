@@ -1,13 +1,11 @@
-package com.ppab1.dreamsaver.tab;
+package com.ppab1.dreamsaver.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import com.ppab1.dreamsaver.R;
-import com.ppab1.dreamsaver.activity.AddUpdateActivity;
 import com.ppab1.dreamsaver.adapter.TargetAdapter;
 import com.ppab1.dreamsaver.database.DatabaseContract;
 import com.ppab1.dreamsaver.model.Target;
@@ -16,7 +14,6 @@ import com.ppab1.dreamsaver.testing.LoadTargetCallback;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 

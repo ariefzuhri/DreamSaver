@@ -1,4 +1,4 @@
-package com.ppab1.dreamsaver.tab;
+package com.ppab1.dreamsaver.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +15,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.activity.AddUpdateActivity;
 import com.ppab1.dreamsaver.adapter.TargetAdapter;
+import com.ppab1.dreamsaver.callback.TargetMoveCallback;
 import com.ppab1.dreamsaver.database.DatabaseContract;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.testing.DatabaseActivity;
@@ -65,6 +67,9 @@ public class FirstTabActivity extends Fragment implements LoadTargetCallback {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        ItemTouchHelper.Callback callback = new TargetMoveCallback(adapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(recyclerView);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

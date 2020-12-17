@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.ppab1.dreamsaver.tab.FirstTabActivity;
-import com.ppab1.dreamsaver.tab.SecondTabActivity;
+import com.ppab1.dreamsaver.fragment.FirstTabActivity;
+import com.ppab1.dreamsaver.fragment.SecondTabActivity;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int numOfTabs;
