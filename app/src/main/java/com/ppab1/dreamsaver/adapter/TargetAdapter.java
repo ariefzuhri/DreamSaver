@@ -112,6 +112,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(activity, LaporanActivity.class);
+                            intent.putExtra(EXTRA_TARGET, target);
                             activity.startActivity(intent);
                         }
                     });
