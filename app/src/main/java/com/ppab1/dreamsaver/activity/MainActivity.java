@@ -158,7 +158,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     null, null, null, null);
 
             if (cursor != null){
-                targetList.addAll(mapCursorToTargetList(cursor));
+                // Fix bug database tidak terfiler (solusi sementara)
+                ArrayList<Target> targetListBug = mapCursorToTargetList(cursor);
+                for (Target target : targetListBug){
+                    if (!(target.getTotalSavings() - target.getSavingsTarget() >= 0)) {
+                        targetList.add(target);
+                    }
+                }
+
+                //targetList.addAll(mapCursorToTargetList(cursor));
+
                 cursor.close();
             }
 

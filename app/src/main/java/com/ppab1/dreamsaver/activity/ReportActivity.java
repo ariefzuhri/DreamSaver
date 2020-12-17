@@ -118,7 +118,7 @@ public class ReportActivity extends AppCompatActivity implements LoadHistoryCall
         protected ArrayList<History> doInBackground(Void... voids) {
             ArrayList<History> historyList = new ArrayList<>();
             Uri uri = Uri.parse(HistoryColumns.CONTENT_URI + "/targetId/" + target.getId());
-            Cursor cursor = weakContext.get().getContentResolver().query(HistoryColumns.CONTENT_URI,
+            Cursor cursor = weakContext.get().getContentResolver().query(uri,
                     null, null, null, null);
 
             if (cursor != null){

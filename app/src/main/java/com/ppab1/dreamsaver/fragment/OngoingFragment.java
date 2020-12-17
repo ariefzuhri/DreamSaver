@@ -109,12 +109,20 @@ public class OngoingFragment extends Fragment implements LoadTargetCallback {
         @Override
         protected ArrayList<Target> doInBackground(Void... voids) {
             ArrayList<Target> targetList = new ArrayList<>();
-            Uri uri = Uri.parse(DatabaseContract.TargetColumns.CONTENT_URI + "/status/false"); // isFinished = false
-            Cursor cursor = weakContext.get().getContentResolver().query(uri,
+            //Uri uri = Uri.parse(DatabaseContract.TargetColumns.CONTENT_URI + "/status/false"); // isFinished = false
+            Cursor cursor = weakContext.get().getContentResolver().query(DatabaseContract.TargetColumns.CONTENT_URI,
                     null, null, null, null);
 
             if (cursor != null){
-                targetList.addAll(mapCursorToTargetList(cursor));
+                // Fix bug database tidak terfiler (solusi sementara)
+                ArrayList<Target> targetListBug = mapCursorToTargetList(cursor);
+                for (Target target : targetListBug){
+                    if (!(target.getTotalSavings() - target.getSavingsTarget() >= 0)) {
+                        targetList.add(target);
+                    }
+                }
+
+                //targetList.addAll(mapCursorToTargetList(cursor));
                 cursor.close();
             }
 
