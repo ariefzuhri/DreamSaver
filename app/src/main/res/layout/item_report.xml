@@ -31,6 +31,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:paddingLeft="5dp"
             android:text="Memuat"
+            android:id="@+id/item_time"
             android:textSize="@dimen/font_xs"/>
 
         <ImageView

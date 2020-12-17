@@ -22,7 +22,7 @@ import static com.ppab1.dreamsaver.utils.DateUtils.getFullDate;
 
 public class LaporanActivity extends AppCompatActivity {
     private TextView tvDailyReport, tvTargetReport, tvDateReport, tvResultReport, tvRemainingDaysReport,
-    tvRemainingDateReport;
+    tvRemainingDateReport, tvPercentageReport;
 
     public static final String EXTRA_TARGET = "extra_target";
     private TargetAdapter adapter;
@@ -41,6 +41,7 @@ public class LaporanActivity extends AppCompatActivity {
         tvResultReport = findViewById(R.id.tv_result_report_target);
         tvRemainingDaysReport = findViewById(R.id.tv_remaining_days_report);
         tvRemainingDateReport = findViewById(R.id.tv_remaining_date_report);
+        tvPercentageReport = findViewById(R.id.tv_percentage);
 
         TextView tvTitle = findViewById(R.id.tv_title_title);
 
@@ -65,6 +66,7 @@ public class LaporanActivity extends AppCompatActivity {
             int remainingDays = getRemainingDays(target.getSavingsTarget(), target.getTotalSavings(), target.getDailyTarget());
             tvRemainingDaysReport.setText(String.valueOf(remainingDays));
             tvRemainingDateReport.setText(getFullDate(addDay(getCurrentDate(), remainingDays), false));
+
 
         }
 
