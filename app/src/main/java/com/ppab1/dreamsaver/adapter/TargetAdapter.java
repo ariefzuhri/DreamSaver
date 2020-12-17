@@ -1,7 +1,9 @@
 package com.ppab1.dreamsaver.adapter;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.activity.LaporanActivity;
 import com.ppab1.dreamsaver.activity.MainActivity;
 import com.ppab1.dreamsaver.callback.TargetMoveCallback;
+import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
 import com.ppab1.dreamsaver.dialog.DialogSaveTake;
 import com.ppab1.dreamsaver.model.Target;
 import com.ppab1.dreamsaver.activity.AddUpdateActivity;
@@ -180,5 +183,20 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
     // Metode ini terpanggil ketika selesai men-drag
     public void onRowClear(TargetViewHolder viewHolder) {
         viewHolder.itemView.setBackgroundColor(activity.getResources().getColor(R.color.white));
+
+        for (int i = 0; i < getItemCount(); i++){
+            Target target = targetList.get(i);
+
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(TargetColumns.NAME, target.getName());
+            contentValues.put(TargetColumns.DAILY_TARGET, target.getDailyTarget());
+            contentValues.put(TargetColumns.SAVINGS_TARGET, target.getSavingsTarget());
+            contentValues.put(TargetColumns.DATE_TARGET, target.getDateTarget());
+            contentValues.put(TargetColumns.TOTAL_SAVINGS, target.getTotalSavings());
+            contentValues.put(TargetColumns.POSITION, i);
+
+            Uri uri = Uri.parse(TargetColumns.CONTENT_URI + "/" + target.getId());
+            activity.getContentResolver().update(uri, contentValues, null, null);
+        }
     }
 }
