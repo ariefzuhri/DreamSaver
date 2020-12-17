@@ -1,8 +1,10 @@
 package com.ppab1.dreamsaver.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,6 +54,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     public static class HistoryViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvTimeReport, tvDateReport, tvNominalReport, tvDescReport;
+        private final ImageView imgIcon;
 
         public HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,14 +62,22 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             tvDateReport = itemView.findViewById(R.id.item_date);
             tvNominalReport = itemView.findViewById(R.id.tv_savings_report);
             tvDescReport = itemView.findViewById(R.id.desc_report);
+            imgIcon = itemView.findViewById(R.id.img_icon_report);
         }
 
         public void bind(History history) {
             tvTimeReport.setText(history.getTime());
             tvDateReport.setText(getFullDate(history.getDate(), false));
-            tvNominalReport.setText(getRupiahFormat(history.getNominal()));
+            tvNominalReport.setText(getRupiahFormat(Math.abs(history.getNominal())));
             tvDescReport.setText(history.getDesc());
 
+            if (history.getNominal() > 0){
+                tvNominalReport.setTextColor(itemView.getResources().getColor(R.color.green));
+                imgIcon.setImageResource(R.drawable.ic_baseline_archive_24_green);
+            } else {
+                tvNominalReport.setTextColor(itemView.getResources().getColor(R.color.red));
+                imgIcon.setImageResource(R.drawable.ic_baseline_unarchive_24_red);
+            }
         }
     }
 }

@@ -16,66 +16,57 @@
 
         <TextView
             android:id="@+id/item_date"
+            style="@style/TextView.Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Memuat"
             android:textColor="@color/black"
-            android:textSize="@dimen/font_xs"
+            android:textSize="@dimen/font_sm"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
+            android:id="@+id/item_time"
+            style="@style/TextView.Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            app:layout_constraintLeft_toRightOf="@+id/item_date"
-            app:layout_constraintTop_toTopOf="parent"
             android:paddingLeft="5dp"
             android:text="Memuat"
-            android:id="@+id/item_time"
-            android:textSize="@dimen/font_xs"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_sm"
+            app:layout_constraintBottom_toBottomOf="@+id/item_date"
+            app:layout_constraintLeft_toRightOf="@+id/item_date"
+            app:layout_constraintTop_toTopOf="@+id/item_date" />
 
         <ImageView
-            android:id="@+id/unarchived"
+            android:id="@+id/img_icon_report"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/ic_baseline_unarchive_24_red"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_date"
             tools:ignore="MissingConstraints" />
 
-        <ImageView
-            android:id="@+id/archived"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:src="@drawable/ic_baseline_archive_24_green"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_date"
-            android:visibility="invisible" />
-
         <TextView
             android:id="@+id/tv_savings_report"
+            style="@style/TextView.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rp0"
             android:textColor="@color/red"
-            android:textSize="@dimen/font_sm"
-            app:layout_constraintBottom_toBottomOf="@+id/unarchived"
+            android:textSize="@dimen/font_nm"
+            app:layout_constraintBottom_toTopOf="@+id/desc_report"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/desc_report"
+            style="@style/TextView.Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Memuat"
-            android:layout_marginTop="5dp"
             android:textSize="@dimen/font_sm"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_savings_report" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

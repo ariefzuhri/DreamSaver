@@ -63,8 +63,10 @@ public class DialogSaveTake extends DialogFragment implements View.OnClickListen
         rgSaveTake.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int id) {
-                if (id == R.id.rb_save_st) edtDesc.setVisibility(View.INVISIBLE);
-                else edtDesc.setVisibility(View.VISIBLE);
+                if (id == R.id.rb_save_st){
+                    edtDesc.setText("");
+                    edtDesc.setVisibility(View.INVISIBLE);
+                } else edtDesc.setVisibility(View.VISIBLE);
             }
         });
 
@@ -95,7 +97,7 @@ public class DialogSaveTake extends DialogFragment implements View.OnClickListen
                 edtNominal.setError("Anda belum mengisi nominal");
                 return;
             } else {
-                if (isZero(nominal)){
+                if (isZero(getFixText(edtNominal))){
                     edtNominal.setError("Angka harus lebih dari nol");
                     return;
                 }
@@ -118,7 +120,7 @@ public class DialogSaveTake extends DialogFragment implements View.OnClickListen
 
             String message;
             if (isSave) message = "Kamu berhasil menabung " + getRupiahFormat(Long.parseLong(nominal)) + " untuk tabungan " + target.getName();
-            else  message = "Kamu berhasil mengambil uang " + getRupiahFormat(Long.parseLong(getFixText(edtNominal))) + " dari tabungan " + target.getName();
+            else  message = "Kamu berhasil mengambil uang " + getRupiahFormat(Math.abs(Long.parseLong(nominal))) + " dari tabungan " + target.getName();
             showToast(getActivity(), message);
         }
 

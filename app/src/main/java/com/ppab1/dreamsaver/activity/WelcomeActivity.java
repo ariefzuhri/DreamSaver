@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.ppab1.dreamsaver.R;
 import com.ppab1.dreamsaver.database.DatabaseContract.TargetColumns;
@@ -37,16 +35,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        TextView tvTitle = findViewById(R.id.tv_title_title);
-
-        ImageButton ibBack = findViewById(R.id.ib_back_title);
-        ibBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
         edtName = findViewById(R.id.edt_name_au);
         edtDailyTarget = findViewById(R.id.edt_daily_target_au);
         edtSavingsTarget = findViewById(R.id.edt_savings_target_au);
@@ -56,8 +44,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         Button btnSave = findViewById(R.id.btn_save_au);
         Button btnDelete = findViewById(R.id.btn_delete_au);
         btnSave.setOnClickListener(this);
-
-        tvTitle.setText(R.string.title_add_au);
         btnDelete.setVisibility(View.INVISIBLE);
     }
 

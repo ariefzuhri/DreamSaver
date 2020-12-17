@@ -109,7 +109,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             final TextView tvSavingsToday = holder.itemView.findViewById(R.id.tv_savings_today_target);
 
             ArrayList<History> historyList = new ArrayList<>();
-            Uri uri = Uri.parse(HistoryColumns.CONTENT_URI + "/target_id/today/" + target.getId());
+            Uri uri = Uri.parse(HistoryColumns.CONTENT_URI + "/targetId/today/" + target.getId());
             Cursor cursor = activity.getContentResolver().query(uri, null, null, null, null);
 
             if (cursor != null){
@@ -137,7 +137,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
         }
         else {
             ImageButton ibMenu = holder.itemView.findViewById(R.id.ib_menu_target);
-            if (target.getTotalSavings() == target.getSavingsTarget()) ibMenu.setVisibility(View.INVISIBLE); // Kalau sudah selesai, sembunyikan
+            if (target.getTotalSavings() >= target.getSavingsTarget()) ibMenu.setVisibility(View.INVISIBLE); // Kalau sudah selesai, sembunyikan
             ibMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

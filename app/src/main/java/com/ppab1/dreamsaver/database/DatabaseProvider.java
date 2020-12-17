@@ -31,8 +31,8 @@ public class DatabaseProvider extends ContentProvider {
         uriMatcher.addURI(AUTHORITY, TargetColumns.TABLE_NAME + "/#", TARGET_ID);
         uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME, HISTORY);
         uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/#", HISTORY_ID);
-        uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/target_id/#", HISTORY_TARGET_ID);
-        uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/target_id/today/#", HISTORY_TARGET_ID_TODAY);
+        uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/targetId/#", HISTORY_TARGET_ID);
+        uriMatcher.addURI(AUTHORITY, HistoryColumns.TABLE_NAME + "/targetId/today/#", HISTORY_TARGET_ID_TODAY);
     }
 
     public DatabaseProvider(){}
