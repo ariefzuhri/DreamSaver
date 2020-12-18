@@ -108,13 +108,16 @@ public class AddUpdateActivity extends AppCompatActivity implements View.OnClick
                 contentValues.put(TargetColumns.DAILY_TARGET, dailyTarget);
                 contentValues.put(TargetColumns.SAVINGS_TARGET, savingsTarget);
                 contentValues.put(TargetColumns.DATE_TARGET, dateTarget);
-                contentValues.put(TargetColumns.TOTAL_SAVINGS, 0);
 
                 if (isUpdate){
+                    contentValues.put(TargetColumns.TOTAL_SAVINGS, target.getTotalSavings());
+                    contentValues.put(TargetColumns.POSITION, target.getPosition());
+
                     Uri uri = Uri.parse(TargetColumns.CONTENT_URI + "/" + target.getId());
                     getContentResolver().update(uri, contentValues, null, null);
                     showToast(this, "Rencana berhasil diperbarui");
                 } else {
+                    contentValues.put(TargetColumns.TOTAL_SAVINGS, 0);
                     getContentResolver().insert(TargetColumns.CONTENT_URI, contentValues);
                     showToast(this, "Rencana baru berhasil dibuat");
                 }
