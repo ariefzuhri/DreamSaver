@@ -137,8 +137,14 @@ public class DialogSaveTake extends DialogFragment implements View.OnClickListen
 
             // Tampilkan pesan
             String message;
-            if (isSave) message = "Kamu berhasil menabung " + getRupiahFormat(Long.parseLong(nominal)) + " untuk tabungan " + target.getName();
-            else  message = "Kamu berhasil mengambil uang " + getRupiahFormat(Math.abs(Long.parseLong(nominal))) + " dari tabungan " + target.getName();
+            boolean isFinished = target.getTotalSavings() - target.getSavingsTarget()+Long.parseLong(nominal) >= 0;
+            if (!isFinished) {
+                if (isSave) message = "Kamu berhasil menabung " + getRupiahFormat(Long.parseLong(nominal)) + " untuk tabungan " + target.getName();
+                else  message = "Kamu berhasil mengambil uang " + getRupiahFormat(Math.abs(Long.parseLong(nominal))) + " dari tabungan " + target.getName();
+            } else {
+                message = "Selamat! Tabungan untuk " + target.getName() + " telah selesai.";
+            }
+
             showToast(getActivity(), message);
         }
 
